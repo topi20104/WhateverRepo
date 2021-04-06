@@ -14,8 +14,8 @@ import dao.Dao;
 import data.ehdokas;
 
 @WebServlet(
-    name = "update",
-    urlPatterns = {"/update"}
+    name = "insert",
+    urlPatterns = {"/insert"}
 )
 public class insert extends HttpServlet {
 	private Dao dao;

@@ -98,7 +98,6 @@ public class Dao {
 			pstmt.setString(6, f.getMiksi());
 			pstmt.setString(7, f.getMita());
 			pstmt.setString(8, f.getAmmatti());
-			pstmt.setInt(9, f.getId());
 			pstmt.executeUpdate();
 			return readAllehdokas();
 		}

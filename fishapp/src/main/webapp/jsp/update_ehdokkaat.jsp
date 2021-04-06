@@ -17,7 +17,7 @@ Ehdokas id: <input type='text' name='id' value='${requestScope.ehdokas.id}'reado
 Ehdokas etunimi: <input type='text' name='etunimi' value='${requestScope.ehdokas.etunimi}'><br>
 Ehdokas sukunimi: <input type='text' name='sukunimi' value='${requestScope.ehdokas.sukunimi}'><br>
 Ehdokas puolue: <input type='text' name='puolue' value='${requestScope.ehdokas.puolue}'><br>
-Ehdokas kotipaikkakunta: <input type='text' name='koti' value='${requestScope.ehdokas.kotipaikkakunta}'><br>
+Ehdokas kotipaikkakunta: <input type='text' name='kotipaikkakunta' value='${requestScope.ehdokas.kotipaikkakunta}'><br>
 Ehdokas ikä: <input type='text' name='ika' value='${requestScope.ehdokas.ika}'><br>
 Ehdokas miksi eduskuntaan?: <input type='text' name='miksi' value='${requestScope.ehdokas.miksi}'><br>
 Ehdokas mitä asioita haluat edistää?: <input type='text' name='mita' value='${requestScope.ehdokas.mita}'><br>

@@ -33,7 +33,7 @@ public class update_ehdokkaat extends HttpServlet {
 		String Sukunimi=request.getParameter("sukunimi");
 		String Etunimi=request.getParameter("etunimi");
 		String Puolue=request.getParameter("puolue");
-		String Kotipaikkakunta= request.getParameter("koti");
+		String Kotipaikkakunta= request.getParameter("kotipaikkakunta");
 		String Ika=request.getParameter("ika");
 		String Miksi=request.getParameter("miksi");
 		String Mita=request.getParameter("mita");
@@ -47,7 +47,7 @@ public class update_ehdokkaat extends HttpServlet {
 		}
 		
 		request.setAttribute("ehdokaslist", list);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/show_ehdokkaat.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("jsp/show_ehdokkaat.jsp");
 		rd.forward(request, response);
 	}
 }
