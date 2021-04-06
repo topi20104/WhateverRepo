@@ -10,7 +10,7 @@
 <title>Candidoods</title>
 
 <link rel="stylesheet" type="text/css" href="mycssfilesomewhere.css">
-<script src="myscriptfile.js"></script>
+
 
 </head>
 
