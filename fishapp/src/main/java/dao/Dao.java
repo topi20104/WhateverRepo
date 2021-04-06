@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import data.ehdokas;
+import data.questions;
 
 import java.sql.Connection;
 
@@ -59,6 +60,7 @@ public class Dao {
 				f.setMita(RS.getString("Mita_asioita_haluat_edistaa"));
 				f.setAmmatti(RS.getString("Ammatti"));
 				list.add(f);
+				
 			}
 			return list;
 		}
@@ -138,6 +140,43 @@ public class Dao {
 				f.setAmmatti(RS.getString("ammatti"));
 			}
 			return f;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	public questions readQuestions(String Kysymys_id) {
+		questions f=null;
+		try {
+			String sql="select * from kysymykset where kysymys_id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, Kysymys_id);
+			ResultSet RS=pstmt.executeQuery();
+			while (RS.next()){
+				f=new questions();
+				f.setId(RS.getInt("Kysymys_ID"));
+				f.setKysymys(RS.getString("Kysymys"));
+				
+			}
+			return f;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	public ArrayList<questions> readAllQuestions() {
+		ArrayList<questions> list=new ArrayList<>();
+		try {
+			Statement stmt=conn.createStatement();
+			ResultSet RS=stmt.executeQuery("select * from kysymykset");
+			while (RS.next()){
+				questions f=new questions();
+				f.setId(RS.getInt("Kysymys_ID"));
+				f.setKysymys(RS.getString("Kysymys"));
+				list.add(f);
+				
+			}
+			return list;
 		}
 		catch(SQLException e) {
 			return null;

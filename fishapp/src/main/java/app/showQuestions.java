@@ -11,33 +11,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
-import data.ehdokas;
-
+import data.questions;
 /**
  * Servlet implementation class ReadToUpdate
  */
-@WebServlet("/show_ehdokkaat")
-public class show_ehdokkaat extends HttpServlet {
+@WebServlet("/Questions")
+public class showQuestions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Dao dao;
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "topi", "assmen123");
 	}
-       
-    public show_ehdokkaat() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		ArrayList<ehdokas> list=null;
+	public showQuestions() {
+	    super();
+	    // TODO Auto-generated constructor stub
+	}
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+	     throws IOException, ServletException {
+		ArrayList<questions> list=null;
 		if (dao.getConnection()) {
-			list=dao.readAllehdokas();
+			list=dao.readAllQuestions();
 		}
-		request.setAttribute("ehdokaslist", list);
+		request.setAttribute("questionslist", list);
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/show_ehdokkaat.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/Questions.jsp");
 		rd.forward(request, response);
 	}
 }
