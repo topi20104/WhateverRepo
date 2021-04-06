@@ -11,7 +11,7 @@ public class ehdokas {
 	private String Mita;
 	private String Ammatti;
 	
-	public ehdokas(String Etunimi, String Sukunimi, String Puolue, String Kotipaikkakunta, String Ika, String Miksi, String Mita, String Ammatti) {
+	public ehdokas(String Ehdokas_ID, String Etunimi, String Sukunimi, String Puolue, String Kotipaikkakunta, String Ika, String Miksi, String Mita, String Ammatti) {
 		// TODO Auto-generated constructor stub
 		setId(Ehdokas_ID);
 		this.Etunimi=Etunimi;

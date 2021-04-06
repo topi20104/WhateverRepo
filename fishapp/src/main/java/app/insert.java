@@ -29,6 +29,7 @@ public class insert extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
+		String Ehdokas_ID = "0"; //Just to initialize id for database
 		String Sukunimi=request.getParameter("etunimi");
 		String Etunimi=request.getParameter("sukunimi");
 		String Puolue=request.getParameter("puolue");
@@ -38,7 +39,7 @@ public class insert extends HttpServlet {
 		String Mita=request.getParameter("mita");
 		String Ammatti=request.getParameter("ammatti");
 		
-		ehdokas f=new ehdokas(Etunimi,  Sukunimi,  Puolue,  Kotipaikkakunta,  Ika,  Miksi,  Mita,  Ammatti);
+		ehdokas f=new ehdokas(Ehdokas_ID, Etunimi,  Sukunimi,  Puolue,  Kotipaikkakunta,  Ika,  Miksi,  Mita,  Ammatti);
 		
 		ArrayList<ehdokas> list=null;
 		if (dao.getConnection()) {
