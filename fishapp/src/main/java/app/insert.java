@@ -29,17 +29,16 @@ public class insert extends HttpServlet {
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
-		String Ehdokas_ID=request.getParameter("id");
-		String Etunimi=request.getParameter("etunimi");
-		String Sukunimi=request.getParameter("sukunimi");
+		String Sukunimi=request.getParameter("etunimi");
+		String Etunimi=request.getParameter("sukunimi");
 		String Puolue=request.getParameter("puolue");
-		String Kotipaikkakunta= request.getParameter("koti");
+		String Kotipaikkakunta= request.getParameter("kotipaikkakunta");
 		String Ika=request.getParameter("ika");
 		String Miksi=request.getParameter("miksi");
 		String Mita=request.getParameter("mita");
 		String Ammatti=request.getParameter("ammatti");
 		
-		ehdokas f=new ehdokas(Ehdokas_ID,  Etunimi,  Sukunimi,  Puolue,  Kotipaikkakunta,  Ika,  Miksi,  Mita,  Ammatti);
+		ehdokas f=new ehdokas(Etunimi,  Sukunimi,  Puolue,  Kotipaikkakunta,  Ika,  Miksi,  Mita,  Ammatti);
 		
 		ArrayList<ehdokas> list=null;
 		if (dao.getConnection()) {

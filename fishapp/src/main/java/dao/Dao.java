@@ -88,7 +88,7 @@ public class Dao {
 	}
 	public ArrayList<ehdokas> insertehdokas(ehdokas f) {
 		try {
-			String sql="insert into ehdokkaat (Etunimi, Sukunimi, Puolue, Kotipaikkakunta, Ika, Miksi_eduskuntaan, Mita_asioita_haluat_edistaa, Ammatti) VALUES (Etunimi=?, Sukunimi=?, Puolue=?, Kotipaikkakunta=?, Ika=?, Miksi_eduskuntaan=?, Mita_asioita_haluat_edistaa=?, Ammatti=?)";
+			String sql="insert into ehdokkaat (Sukunimi, Etunimi, Puolue, Kotipaikkakunta, Ika, Miksi_eduskuntaan, Mita_asioita_haluat_edistaa, Ammatti) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, f.getEtunimi());
 			pstmt.setString(2, f.getSukunimi());
