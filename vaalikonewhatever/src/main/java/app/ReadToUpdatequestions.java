@@ -43,7 +43,7 @@ public class ReadToUpdatequestions extends HttpServlet {
 		}
 		request.setAttribute("questions", f);
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/Questions.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/AnswerQuestions.jsp");
 		rd.forward(request, response);
 	}
 }
