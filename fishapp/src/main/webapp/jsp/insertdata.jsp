@@ -11,8 +11,8 @@
 </head>
 <body>
 <form action="../insert" method="post">
+Sukunimi:<input type='text' name='sukunimi' id='sukunimi' value='sukunimi'><br> 
 Etunimi: <input type='text' name='etunimi' id='etunimi' value='etunimi'><br> 
-Sukunimi: <input type='text' name='sukunimi' id='sukunimi' value='sukunimi'><br> 
 Puolue: <input type='text' name='puolue' id='puolue' value='puolue'><br> 
 Kotipaikkakunta: <input type='text' name='kotipaikkakunta' id='kotipaikkakunta' value='kotipaikkakunta'><br> 
 Ikä: <input type='text' name='ika' id='ika' value='ika'><br> 

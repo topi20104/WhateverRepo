@@ -51,8 +51,8 @@ public class Dao {
 			while (RS.next()){
 				ehdokas f=new ehdokas();
 				f.setId(RS.getInt("Ehdokas_ID"));
-				f.setEtunimi(RS.getString("Etunimi"));
 				f.setSukunimi(RS.getString("Sukunimi"));
+				f.setEtunimi(RS.getString("Etunimi"));
 				f.setPuolue(RS.getString("Puolue"));
 				f.setKotipaikkakunta(RS.getString("Kotipaikkakunta"));
 				f.setIka(RS.getInt("Ika"));
@@ -70,10 +70,11 @@ public class Dao {
 	}
 	public ArrayList<ehdokas> updateehdokas(ehdokas f) {
 		try {
-			String sql="update ehdokkaat set Etunimi=?, Sukunimi=?, Puolue=?, Kotipaikkakunta=?, Ika=?, Miksi_eduskuntaan=?, Mita_asioita_haluat_edistaa=?, Ammatti=? where Ehdokas_ID=?";
+			String sql="update ehdokkaat set Sukunimi=?, Etunimi=?, Puolue=?, Kotipaikkakunta=?, Ika=?, Miksi_eduskuntaan=?, Mita_asioita_haluat_edistaa=?, Ammatti=? where Ehdokas_ID=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, f.getEtunimi());
-			pstmt.setString(2, f.getSukunimi());
+			
+			pstmt.setString(1, f.getSukunimi());
+			pstmt.setString(2, f.getEtunimi());
 			pstmt.setString(3, f.getPuolue());
 			pstmt.setString(4, f.getKotipaikkakunta());
 			pstmt.setInt(5, f.getIka());
@@ -92,8 +93,9 @@ public class Dao {
 		try {
 			String sql="insert into ehdokkaat (Sukunimi, Etunimi, Puolue, Kotipaikkakunta, Ika, Miksi_eduskuntaan, Mita_asioita_haluat_edistaa, Ammatti) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, f.getEtunimi());
-			pstmt.setString(2, f.getSukunimi());
+			
+			pstmt.setString(1, f.getSukunimi());
+			pstmt.setString(2, f.getEtunimi());
 			pstmt.setString(3, f.getPuolue());
 			pstmt.setString(4, f.getKotipaikkakunta());
 			pstmt.setInt(5, f.getIka());

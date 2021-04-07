@@ -30,8 +30,8 @@ public class update_ehdokkaat extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		String Ehdokas_ID=request.getParameter("id");
-		String Sukunimi=request.getParameter("sukunimi");
 		String Etunimi=request.getParameter("etunimi");
+		String Sukunimi=request.getParameter("sukunimi");
 		String Puolue=request.getParameter("puolue");
 		String Kotipaikkakunta= request.getParameter("kotipaikkakunta");
 		String Ika=request.getParameter("ika");

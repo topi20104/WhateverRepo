@@ -9,9 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>Questions menu</h1>
+<table style="width:100%;">
 <c:forEach var="questions" items="${requestScope.questionslist}">
-<dl> ${questions.id}: ${questions.kysymys} </dl>
+<tr> <td> ${questions.id}: ${questions.kysymys}</td></tr> 
 </c:forEach>
-
+</table>
 </body>
 </html>
