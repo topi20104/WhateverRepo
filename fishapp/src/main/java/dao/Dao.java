@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import data.ehdokas;
 import data.questions;
@@ -140,8 +141,35 @@ public class Dao {
 				f.setMiksi(RS.getString("miksi_eduskuntaan"));
 				f.setMita(RS.getString("mita_asioita_haluat_edistaa"));
 				f.setAmmatti(RS.getString("ammatti"));
+				
 			}
 			return f;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	public ehdokas readehdokasshow(String id) {
+		ehdokas g=null;
+		try {
+			String sql="select * from ehdokkaat where EHDOKAS_ID=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			ResultSet RS=pstmt.executeQuery();
+			while (RS.next()){
+				g=new ehdokas();
+				g.setId(RS.getInt("ehdokas_id"));
+				g.setEtunimi(RS.getString("etunimi"));
+				g.setSukunimi(RS.getString("sukunimi"));
+				g.setPuolue(RS.getString("puolue"));
+				g.setKotipaikkakunta(RS.getString("kotipaikkakunta"));
+				g.setIka(RS.getInt("ika"));
+				g.setMiksi(RS.getString("miksi_eduskuntaan"));
+				g.setMita(RS.getString("mita_asioita_haluat_edistaa"));
+				g.setAmmatti(RS.getString("ammatti"));
+				
+			}
+			return g;
 		}
 		catch(SQLException e) {
 			return null;

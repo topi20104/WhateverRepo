@@ -23,15 +23,19 @@
 		
 		<table style="width:100%;">
 		<c:forEach var="ehdokas" items="${requestScope.ehdokaslist}" >
-		<tr><td><a href='/readtoupdateehdokasshow?id=${ehdokas.id}'> Show </a>${ehdokas.sukunimi} ${ehdokas.etunimi} <a href='/delete?id=${ehdokas.id}'>delete</a> <a href='/readtoupdate?id=${ehdokas.id}'>update</a></td></tr>
+		<tr><td><a href='/show?id=${ehdokas.id}'> Show </a>${ehdokas.sukunimi} ${ehdokas.etunimi} </td></tr>
 		</c:forEach>
-		
-		
+
 		</table>
 		
 	</div>
 	<div class="column">
-
+	
+	Info based on id
+	<c:forEach var="ehdokas" items="${requestScope.ehdokaslist}" >
+	<tr><td>${ehdokas.id} ${ehdokas.sukunimi} ${ehdokas.etunimi} </td></tr>
+	</c:forEach>
+	
 	</div>
 </div>
 </body>
