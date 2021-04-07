@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>    
-    
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +25,6 @@
 		<c:forEach var="ehdokas" items="${requestScope.ehdokaslist}" >
 		<tr><td><a href='/readtoupdateehdokasshow?id=${ehdokas.id}'> Show </a>${ehdokas.sukunimi} ${ehdokas.etunimi} <a href='/delete?id=${ehdokas.id}'>delete</a> <a href='/readtoupdate?id=${ehdokas.id}'>update</a></td></tr>
 		</c:forEach>
-		
-		
 		</table>
 		
 	</div>
