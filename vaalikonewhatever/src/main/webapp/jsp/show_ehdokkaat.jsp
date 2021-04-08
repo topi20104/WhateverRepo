@@ -16,25 +16,53 @@
 </head>
 
 <body>
-	<div class="columns">
-		<div class="column">
-
-			<h2>candidates</h2>
-			<a href="/jsp/insertdata.jsp">Add a new lad</a><br>
-
-			<table style="width: 100%;">
+	<div class="column">
+		<h1 class="title">Candidates</h1>
+			<a href="/jsp/insertdata.jsp">
+				<button class="button is-info">Add a new lad</button>
+			</a><br>
+	</div>
+	<div class="column is-two-thirds">
+		<!-- A table with a table head, and a table body -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Last name</th>
+					<th>First name</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			<!-- Looped data from ehdokaslist -->
 				<c:forEach var="ehdokas" items="${requestScope.ehdokaslist}">
 					<tr>
-						<td><a href='/readtoupdateehdokasshow?id=${ehdokas.id}'>
-								Show </a>${ehdokas.sukunimi} ${ehdokas.etunimi} <a
-							href='/delete?id=${ehdokas.id}'>delete</a> <a
-							href='/readtoupdate?id=${ehdokas.id}'>update</a></td>
+						<td>
+							<a href='/readtoupdateehdokasshow?id=${ehdokas.id}'>
+								<button class="button is-info is-small">Show</button>
+							</a>
+						</td>
+						<td>
+							${ehdokas.sukunimi}
+						</td>
+						<td>
+							${ehdokas.etunimi}
+						</td>
+						<td>
+							<a href='/readtoupdate?id=${ehdokas.id}'>
+								<button class="button is-info is-small">Update</button>
+							</a>
+						</td>
+						<td>
+							<a href='/delete?id=${ehdokas.id}'>
+								<button class="button is-danger is-small">Delete</button>
+							</a>
+						</td>
 					</tr>
 				</c:forEach>
-			</table>
-
-		</div>
-		<div class="column"></div>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>
