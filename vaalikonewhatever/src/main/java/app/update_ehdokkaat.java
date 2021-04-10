@@ -38,8 +38,10 @@ public class update_ehdokkaat extends HttpServlet {
 		String Miksi=request.getParameter("miksi");
 		String Mita=request.getParameter("mita");
 		String Ammatti=request.getParameter("ammatti");
+		String Salasana=request.getParameter("salasana");
+		String Kayttajanimi=request.getParameter("kayttajanimi");
 		
-		ehdokas f=new ehdokas(Ehdokas_ID, Sukunimi, Etunimi, Puolue,  Kotipaikkakunta,  Ika,  Miksi,  Mita,  Ammatti);
+		ehdokas f=new ehdokas(Ehdokas_ID, Sukunimi, Etunimi, Puolue,  Kotipaikkakunta,  Ika,  Miksi,  Mita,  Ammatti, Salasana, Kayttajanimi);
 		
 		ArrayList<ehdokas> list=null;
 		if (dao.getConnection()) {

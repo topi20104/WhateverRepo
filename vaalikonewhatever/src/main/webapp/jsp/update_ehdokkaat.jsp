@@ -30,9 +30,15 @@
 		asioita haluat edistää?: <input type='text' name='mita'
 			value='${requestScope.ehdokas.mita}'><br> Ehdokas
 		ammatti: <input type='text' name='ammatti'
-			value='${requestScope.ehdokas.ammatti}'><br> <input
-			type='submit' name='ok' value='Send'>
-
+			value='${requestScope.ehdokas.ammatti}'><br> 
+			
+		salasana: <input type='text' name='salasana'
+			value='${requestScope.ehdokas.salasana}'><br> 
+			
+		käyttäjänimi: <input type='text' name='kayttajanimi'
+			value='${requestScope.ehdokas.kayttajanimi}'><br>
+			<input type='submit' name='ok' value='Send'>
+	
 	</form>
 </body>
 </html>

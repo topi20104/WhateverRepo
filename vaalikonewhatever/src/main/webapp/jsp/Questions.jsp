@@ -19,7 +19,7 @@
 		
 		<c:forEach var="questions" items="${requestScope.questionslist}">
 			<tr>
-				<td><a href="readtoupdatequestion?id${questions.id}">show</a> ${questions.kysymys} </td> 
+				<td><a href="readtoupdatequestions?id=${questions.id}">show</a> ${questions.kysymys} </td> 
 			</tr>
 		</c:forEach>
 	</table>
