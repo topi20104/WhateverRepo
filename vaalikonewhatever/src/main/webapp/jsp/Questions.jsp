@@ -12,10 +12,10 @@
 </head>
 <body>
 	<h1>Questions menu</h1>
-	<form method="post" action="jsp/saveResults">
+	<form method="post" action="../saveResults">
 	<table style="width: 100%; margin-left:70px;">
-		${username} <br>
-		${salasana}
+		Ehdokas : ${username} <br>
+		
 		<c:forEach var="questions" items="${requestScope.questionslist}">
 			<tr>
 				<td> ${questions.kysymys} <br>
