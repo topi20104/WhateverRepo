@@ -24,7 +24,9 @@
 	</div>
 	<div class="column is-two-thirds">
 		<!-- A table with a table head, and a table body -->
-		${sessionScope['kayttajanimi']}
+		${user} <br>
+		${username}
+		${salasana}
 		<table class="table">
 			<thead>
 				<tr>

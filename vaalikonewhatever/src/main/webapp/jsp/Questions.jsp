@@ -14,7 +14,8 @@
 	<h1>Questions menu</h1>
 	<form method="post" action="jsp/saveResults">
 	<table style="width: 100%; margin-left:70px;">
-		
+		${username} <br>
+		${salasana}
 		<c:forEach var="questions" items="${requestScope.questionslist}">
 			<tr>
 				<td> ${questions.kysymys} <br>

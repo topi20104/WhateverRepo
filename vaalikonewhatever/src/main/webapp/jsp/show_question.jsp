@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h2>Answer Question</h2>
-
+			${user}
 	
 		  
 			id : ${requestScope.questions.id} <br>
