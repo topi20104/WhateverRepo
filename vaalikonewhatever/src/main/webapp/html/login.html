@@ -3,20 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
 </head>
 <body>
-	<h1>Loginpage</h1>
-	<form>
-		<div class="container">
-			<label for="username">Username</label> <input type="text"
-				placeholder="username" name="username" required> <label
-				for="password"><b>Password</b></label> <input type="password"
-				placeholder="Enter Password" name="password" required>
+<!-- Container - column relationship is pretty weird, so we need manual styling :) -->
+	<div class="container is-max-desktop" style="width: 25%">
+		<div class="column has-text-centered">
+			<form class="box">
+				<div class="field">
+					
+					<!-- Username -->
+					<label class="label" for="username">
+						Username
+					</label>
+					<div class="control">
+						<input class="input" type="text" placeholder="Enter Username" autocomplete="username" name="username" required>
+					</div>
+				</div>
+				
+				<!-- Password -->
+				<div class="field">
+					<label class="label" for="password">
+						<b>Password</b>
+					</label>
+					<div class="control">
+						<input class="input" type="password" placeholder="Enter Password" autocomplete="current-password" name="password" required>
+					</div>
+				</div>
+				
+				<!-- Buttons -->
+				<button class="button is-success is-rounded" type="submit">Login</button>
 
-			<button type="submit">Login</button>
-			<br> <a href="register.html">Register</a>
+			</form>
 		</div>
-	</form>
-
+	</div>
 </body>
 </html>
