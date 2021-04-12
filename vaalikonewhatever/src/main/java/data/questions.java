@@ -3,6 +3,7 @@ package data;
 public class questions {
 	private int kysymys_id;
 	private String kysymys;
+	
 	public questions (String kysymys_id, String kysymys) {
 		setId(kysymys_id);
 		this.kysymys = kysymys;

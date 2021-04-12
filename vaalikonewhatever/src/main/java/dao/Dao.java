@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.sql.*;
 import data.ehdokas;
 import data.questions;
 
@@ -20,7 +20,6 @@ public class Dao {
 	private String user;
 	private String pass;
 	private Connection conn;
-	
 	public Dao(String url, String user, String pass) {
 		this.url=url;
 		this.user=user;
@@ -44,6 +43,7 @@ public class Dao {
 			return false;
 		}
 	}
+	
 	public ArrayList<ehdokas> readAllehdokas() {
 		ArrayList<ehdokas> list=new ArrayList<>();
 		try {
@@ -60,6 +60,8 @@ public class Dao {
 				f.setMiksi(RS.getString("Miksi_eduskuntaan"));
 				f.setMita(RS.getString("Mita_asioita_haluat_edistaa"));
 				f.setAmmatti(RS.getString("Ammatti"));
+				f.setSalasana(RS.getString("Salasana"));
+				f.setKayttajanimi(RS.getString("Kayttajanimi"));
 				list.add(f);
 				
 			}
@@ -69,9 +71,32 @@ public class Dao {
 			return null;
 		}
 	}
+	public ehdokas checkLogin(String Kayttajanimi, String Salasana)  {
+		
+		try {
+			String sql = "SELECT * FROM ehdokkaat WHERE Kayttajanimi=? and Salasana=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, Kayttajanimi);
+			pstmt.setString(2, Salasana);
+			
+			ResultSet RS=pstmt.executeQuery();
+			ehdokas ehdokas = null;
+			
+			if (RS.next()) {
+				ehdokas = new ehdokas();
+				ehdokas.setKayttajanimi(Kayttajanimi);
+				ehdokas.setSalasana(Salasana);
+			}
+			return ehdokas;
+		}
+		catch(SQLException e) {
+			
+			return null;
+		}
+	}
 	public ArrayList<ehdokas> updateehdokas(ehdokas f) {
 		try {
-			String sql="update ehdokkaat set Sukunimi=?, Etunimi=?, Puolue=?, Kotipaikkakunta=?, Ika=?, Miksi_eduskuntaan=?, Mita_asioita_haluat_edistaa=?, Ammatti=? where Ehdokas_ID=?";
+			String sql="update ehdokkaat set Sukunimi=?, Etunimi=?, Puolue=?, Kotipaikkakunta=?, Ika=?, Miksi_eduskuntaan=?, Mita_asioita_haluat_edistaa=?, Ammatti=?, Salasana=?, Kayttajanimi=? where Ehdokas_ID=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			
 			pstmt.setString(1, f.getSukunimi());
@@ -82,7 +107,9 @@ public class Dao {
 			pstmt.setString(6, f.getMiksi());
 			pstmt.setString(7, f.getMita());
 			pstmt.setString(8, f.getAmmatti());
-			pstmt.setInt(9, f.getId());
+			pstmt.setString(9, f.getSalasana());
+			pstmt.setString(10, f.getKayttajanimi());
+			pstmt.setInt(11, f.getId());
 			pstmt.executeUpdate();
 			return readAllehdokas();
 		}
@@ -92,7 +119,7 @@ public class Dao {
 	}
 	public ArrayList<ehdokas> insertehdokas(ehdokas f) {
 		try {
-			String sql="insert into ehdokkaat (Sukunimi, Etunimi, Puolue, Kotipaikkakunta, Ika, Miksi_eduskuntaan, Mita_asioita_haluat_edistaa, Ammatti) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql="insert into ehdokkaat (Sukunimi, Etunimi, Puolue, Kotipaikkakunta, Ika, Miksi_eduskuntaan, Mita_asioita_haluat_edistaa, Ammatti, Salasana, Kayttajanimi) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			
 			pstmt.setString(1, f.getSukunimi());
@@ -103,6 +130,8 @@ public class Dao {
 			pstmt.setString(6, f.getMiksi());
 			pstmt.setString(7, f.getMita());
 			pstmt.setString(8, f.getAmmatti());
+			pstmt.setString(9, f.getSalasana());
+			pstmt.setString(10, f.getKayttajanimi());
 			pstmt.executeUpdate();
 			return readAllehdokas();
 		}
@@ -141,6 +170,8 @@ public class Dao {
 				f.setMiksi(RS.getString("miksi_eduskuntaan"));
 				f.setMita(RS.getString("mita_asioita_haluat_edistaa"));
 				f.setAmmatti(RS.getString("ammatti"));
+				f.setSalasana(RS.getString("salasana"));
+				f.setKayttajanimi(RS.getString("kayttajanimi"));
 				
 			}
 			return f;
@@ -167,6 +198,7 @@ public class Dao {
 				g.setMiksi(RS.getString("miksi_eduskuntaan"));
 				g.setMita(RS.getString("mita_asioita_haluat_edistaa"));
 				g.setAmmatti(RS.getString("ammatti"));
+				g.setKayttajanimi(RS.getString("kayttajanimi"));
 				
 			}
 			return g;
@@ -175,17 +207,17 @@ public class Dao {
 			return null;
 		}
 	}
-	public questions readQuestions(String Kysymys_id) {
+	public questions readQuestions(String id) {
 		questions f=null;
 		try {
-			String sql="select * from kysymykset where kysymys_id=?";
+			String sql="select * from kysymykset where KYSYMYS_ID=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, Kysymys_id);
+			pstmt.setString(1, id);
 			ResultSet RS=pstmt.executeQuery();
 			while (RS.next()){
 				f=new questions();
-				f.setId(RS.getInt("Kysymys_ID"));
-				f.setKysymys(RS.getString("Kysymys"));
+				f.setId(RS.getInt("kysymys_id"));
+				f.setKysymys(RS.getString("kysymys"));
 				
 			}
 			return f;
@@ -212,4 +244,5 @@ public class Dao {
 			return null;
 		}
 	}
+	
 }

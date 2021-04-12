@@ -36,14 +36,14 @@ public class ReadToUpdatequestions extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String id=request.getParameter("Kysymys_id");
+		String id=request.getParameter("id");
 		questions f=null;
 		if (dao.getConnection()) {
 			f=dao.readQuestions(id);
 		}
 		request.setAttribute("questions", f);
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/AnswerQuestions.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/show_question.jsp");
 		rd.forward(request, response);
 	}
 }

@@ -10,13 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import dao.Dao;
 import data.ehdokas;
 
 /**
  * Servlet implementation class ReadToUpdate
  */
-@WebServlet("/show_ehdokkaat")
+@WebServlet("/")
 public class show_ehdokkaat extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Dao dao;
@@ -31,6 +32,7 @@ public class show_ehdokkaat extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		ArrayList<ehdokas> list=null;
 		if (dao.getConnection()) {
 			list=dao.readAllehdokas();

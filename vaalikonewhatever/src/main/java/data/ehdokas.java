@@ -10,8 +10,10 @@ public class ehdokas {
 	private String Miksi;
 	private String Mita;
 	private String Ammatti;
+	private String Salasana;
+	private String Kayttajanimi;
 	
-	public ehdokas(String Ehdokas_ID, String Sukunimi, String Etunimi, String Puolue, String Kotipaikkakunta, String Ika, String Miksi, String Mita, String Ammatti) {
+	public ehdokas(String Ehdokas_ID, String Sukunimi, String Etunimi, String Puolue, String Kotipaikkakunta, String Ika, String Miksi, String Mita, String Ammatti, String Salasana, String Kayttajanimi) {
 		// TODO Auto-generated constructor stub
 		setId(Ehdokas_ID);
 		this.Etunimi=Etunimi;
@@ -22,7 +24,14 @@ public class ehdokas {
 		this.setMiksi(Miksi);
 		this.setMita(Mita);
 		this.setAmmatti(Ammatti);
+		this.setSalasana(Salasana);
+		this.setKayttajanimi(Kayttajanimi);
 		
+		
+	}
+	public ehdokas (String Salasana, String Kayttajanimi) {
+		this.setSalasana(Salasana);
+		this.setKayttajanimi(Kayttajanimi);
 	}
 	public ehdokas() {
 		// TODO Auto-generated constructor stub
@@ -96,5 +105,17 @@ public class ehdokas {
 	}
 	public void setAmmatti(String ammatti) {
 		Ammatti = ammatti;
+	}
+	public String getSalasana() {
+		return Salasana;
+	}
+	public void setSalasana(String salasana) {
+		Salasana = salasana;
+	}
+	public String getKayttajanimi() {
+		return Kayttajanimi;
+	}
+	public void setKayttajanimi(String kayttajanimi) {
+		Kayttajanimi = kayttajanimi;
 	}
 }
