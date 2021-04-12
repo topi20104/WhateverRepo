@@ -23,8 +23,7 @@
 				3<input type="radio" id="3" name="${questions.id}" value="3 ">
 				4<input type="radio" id="4" name="${questions.id}" value="4">
 				5<input type="radio" id="5" name="${questions.id}" value="5"> <br>
-				Kommentti: <input type='text' name=''
-				value=''><br> <br>
+				Kommentti: <input type='text' name='' value=''><br> <br>
 				 </td> 
 			</tr>
 		</c:forEach>
