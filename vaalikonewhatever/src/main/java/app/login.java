@@ -58,8 +58,9 @@ public class login extends HttpServlet {
                 String message = "Invalid email/password";
                 request.setAttribute("message", message);
             }
-            String redirect = "http://localhost:8080/jsp/show_ehdokkaat.jsp";
+            String redirect = "http://localhost:8080";
             response.sendRedirect(redirect);
+           
             
              
         } catch (SQLException | ClassNotFoundException ex) {
