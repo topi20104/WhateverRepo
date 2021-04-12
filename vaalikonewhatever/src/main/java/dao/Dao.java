@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.sql.*;
 import data.ehdokas;
 import data.questions;
 
@@ -20,7 +20,6 @@ public class Dao {
 	private String user;
 	private String pass;
 	private Connection conn;
-	
 	public Dao(String url, String user, String pass) {
 		this.url=url;
 		this.user=user;
@@ -44,6 +43,7 @@ public class Dao {
 			return false;
 		}
 	}
+	
 	public ArrayList<ehdokas> readAllehdokas() {
 		ArrayList<ehdokas> list=new ArrayList<>();
 		try {
@@ -68,6 +68,29 @@ public class Dao {
 			return list;
 		}
 		catch(SQLException e) {
+			return null;
+		}
+	}
+	public ehdokas checkLogin(String Kayttajanimi, String Salasana)  {
+		
+		try {
+			String sql = "SELECT * FROM ehdokkaat WHERE Kayttajanimi=? and Salasana=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, Kayttajanimi);
+			pstmt.setString(2, Salasana);
+			
+			ResultSet RS=pstmt.executeQuery();
+			ehdokas ehdokas = null;
+			
+			if (RS.next()) {
+				ehdokas = new ehdokas();
+				ehdokas.setKayttajanimi(Kayttajanimi);
+				ehdokas.setSalasana(Salasana);
+			}
+			return ehdokas;
+		}
+		catch(SQLException e) {
+			
 			return null;
 		}
 	}

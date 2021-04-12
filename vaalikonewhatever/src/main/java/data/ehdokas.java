@@ -29,6 +29,10 @@ public class ehdokas {
 		
 		
 	}
+	public ehdokas (String Salasana, String Kayttajanimi) {
+		this.setSalasana(Salasana);
+		this.setKayttajanimi(Kayttajanimi);
+	}
 	public ehdokas() {
 		// TODO Auto-generated constructor stub
 	}
