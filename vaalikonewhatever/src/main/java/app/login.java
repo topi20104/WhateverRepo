@@ -38,7 +38,7 @@ public class login extends HttpServlet {
             throws ServletException, IOException {
         String Kayttajanimi = request.getParameter("Kayttajanimi");
         String Salasana     = request.getParameter("Salasana");
-        String Ehdokas_ID		= request.getParameter("Ehdokas_ID");
+        
          
         UserDao userDao = new UserDao();
          
@@ -46,13 +46,12 @@ public class login extends HttpServlet {
              user user = userDao.checkLogin(Kayttajanimi, Salasana);
              String username = Kayttajanimi;
              String password = Salasana;
-             String id = Ehdokas_ID;
+             
             
              
             if (user != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                session.setAttribute("id",id);
                 session.setAttribute("username", username);
                 session.setAttribute("salasana", password);
                 session.setAttribute("ehdokaslist", list);

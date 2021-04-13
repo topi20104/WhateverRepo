@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.sql.*;
 import data.ehdokas;
 import data.questions;
+import data.vastaus;
 
 import java.sql.Connection;
 
@@ -244,5 +245,43 @@ public class Dao {
 			return null;
 		}
 	}
+	public ArrayList<vastaus> insertAnswers(vastaus f) {
+		
+		try {
+			
+			String insert1 = "insert into vastaukset (Kayttajanimi, Vastaus, Kysymys_id, Kommentti) VALUES (?, ?, ?, ?)";
+			PreparedStatement stmt = conn.prepareStatement(insert1);
+			stmt.setString(1, f.getKayttajanimi());
+			stmt.setInt(3, f.getVastaus());
+			stmt.setInt(2, f.getKysymys_id());
+			stmt.setString(4, f.getKommentti());
+			stmt.executeUpdate();
+
+			 
+			return readAllAnswers();
+		}
+			catch(SQLException e) {
+				return null;
+			}
+	}
 	
+public ArrayList<vastaus> readAllAnswers() {
+	ArrayList<vastaus> list=new ArrayList<>();
+	try {
+		Statement stmt=conn.createStatement();
+		ResultSet RS=stmt.executeQuery("select * from vastaukset");
+		while (RS.next()){
+			vastaus f=new vastaus();
+			f.setKysymys_id(RS.getInt("Kysymys_ID"));
+			f.setKayttajanimi(RS.getString("Kayttajanimi"));
+			f.setVastaus(RS.getInt("Vastaus"));
+			f.setKommentti(RS.getString("Kommentti"));
+			list.add(f);
+		}
+		return list;
+	}
+	catch(SQLException e) {
+		return null;
+	}
+}
 }
