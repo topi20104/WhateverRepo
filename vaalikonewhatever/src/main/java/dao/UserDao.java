@@ -18,6 +18,7 @@ public class UserDao {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, Kayttajanimi);
         statement.setString(2, Salasana);
+        
  
         ResultSet result = statement.executeQuery();
  
@@ -27,6 +28,7 @@ public class UserDao {
             user = new user();
             user.setKayttajanimi(result.getString("Kayttajanimi"));
             user.setSalasana(Salasana);
+            
         }
  
        
