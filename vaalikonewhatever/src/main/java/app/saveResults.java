@@ -1,10 +1,6 @@
 package app;
 
-import java.awt.List;
 import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.Dao;
-import data.ehdokas;
 import data.vastaus;
 
 @WebServlet(
@@ -36,15 +31,12 @@ public class saveResults extends HttpServlet {
 			HttpSession session = request.getSession();
 			String answer = "";
 			String Kayttajanimi = session.getAttribute("username").toString();
-			
-			
-			
-			String comment = "Sandnibbas";
+
 			int QID = 0;
 			
 			for (int i=1;i<20;i++) {
-				
-				
+				String comm ="comment" + Integer.toString(i);
+				String comment = request.getParameter(comm);
 				String test = Integer.toString(i);
 				String ans = request.getParameter(test);
 				QID++;

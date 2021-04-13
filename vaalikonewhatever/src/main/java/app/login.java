@@ -29,9 +29,6 @@ public class login extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-		if (dao.getConnection()) {
-			list=dao.readAllehdokas();
-		}
     }
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

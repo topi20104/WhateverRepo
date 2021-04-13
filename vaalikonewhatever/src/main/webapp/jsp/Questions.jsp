@@ -40,7 +40,7 @@
 						</label>
 
 						<label class="radio">
-							<input type="radio" id="3" name="${questions.id}" value="3" checked>
+							<input type="radio" id="3" name="${questions.id}" value="3">
 								3
 						</label>
 
@@ -55,7 +55,7 @@
 						</label>
 					</div>
 
-					<textarea class="textarea" name='' placeholder="Kommentti"></textarea>
+					<textarea class="textarea" name='comment${questions.id}' placeholder="Kommentti"></textarea>
 
 				</div>
 				</c:forEach>

@@ -256,8 +256,6 @@ public class Dao {
 			stmt.setInt(2, f.getKysymys_id());
 			stmt.setString(4, f.getKommentti());
 			stmt.executeUpdate();
-
-			 
 			return readAllAnswers();
 		}
 			catch(SQLException e) {
@@ -265,23 +263,24 @@ public class Dao {
 			}
 	}
 	
-public ArrayList<vastaus> readAllAnswers() {
-	ArrayList<vastaus> list=new ArrayList<>();
-	try {
-		Statement stmt=conn.createStatement();
-		ResultSet RS=stmt.executeQuery("select * from vastaukset");
-		while (RS.next()){
-			vastaus f=new vastaus();
-			f.setKysymys_id(RS.getInt("Kysymys_ID"));
-			f.setKayttajanimi(RS.getString("Kayttajanimi"));
-			f.setVastaus(RS.getInt("Vastaus"));
-			f.setKommentti(RS.getString("Kommentti"));
-			list.add(f);
+	
+	public ArrayList<vastaus> readAllAnswers() {
+		ArrayList<vastaus> list=new ArrayList<>();
+		try {
+			Statement stmt=conn.createStatement();
+			ResultSet RS=stmt.executeQuery("select * from vastaukset");
+			while (RS.next()){
+				vastaus f=new vastaus();
+				f.setKysymys_id(RS.getInt("Kysymys_ID"));
+				f.setKayttajanimi(RS.getString("Kayttajanimi"));
+				f.setVastaus(RS.getInt("Vastaus"));
+				f.setKommentti(RS.getString("Kommentti"));
+				list.add(f);
+			}
+			return list;
 		}
-		return list;
+		catch(SQLException e) {
+			return null;
+		}
 	}
-	catch(SQLException e) {
-		return null;
-	}
-}
 }
