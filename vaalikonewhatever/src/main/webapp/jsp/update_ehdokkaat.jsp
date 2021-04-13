@@ -81,7 +81,7 @@
 				<label class="label">
 					Salasana:
 				</label>
-			<input class="input" type='password' id='salasana' name='salasana' autocomplete="new-password" value='${password}'>
+			<input class="input" type='password' id='salasana' name='salasana' autocomplete="new-password" value='${salasana}'>
 			</div>
 			<div class="field">
 				<label class="label">
