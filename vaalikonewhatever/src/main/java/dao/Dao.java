@@ -70,29 +70,7 @@ public class Dao {
 			return null;
 		}
 	}
-	public ehdokas checkLogin(String Kayttajanimi, String Salasana)  {
-		
-		try {
-			String sql = "SELECT * FROM ehdokkaat WHERE Kayttajanimi=? and Salasana=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, Kayttajanimi);
-			pstmt.setString(2, Salasana);
-			
-			ResultSet RS=pstmt.executeQuery();
-			ehdokas ehdokas = null;
-			
-			if (RS.next()) {
-				ehdokas = new ehdokas();
-				ehdokas.setKayttajanimi(Kayttajanimi);
-				ehdokas.setSalasana(Salasana);
-			}
-			return ehdokas;
-		}
-		catch(SQLException e) {
-			
-			return null;
-		}
-	}
+
 	public ArrayList<ehdokas> updateehdokas(ehdokas f) {
 		try {
 			String sql="update ehdokkaat set Sukunimi=?, Etunimi=?, Puolue=?, Kotipaikkakunta=?, Ika=?, Miksi_eduskuntaan=?, Mita_asioita_haluat_edistaa=?, Ammatti=?, Salasana=?, Kayttajanimi=? where Ehdokas_ID=?";
