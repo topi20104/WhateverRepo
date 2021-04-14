@@ -48,10 +48,8 @@ public class login extends HttpServlet {
              
             if (user != null) {
                 HttpSession session = request.getSession();
-                session.setAttribute("user", user);
                 session.setAttribute("username", username);
                 session.setAttribute("salasana", password);
-                session.setAttribute("ehdokaslist", list);
                
             } else {
                 String message = "Invalid email/password";

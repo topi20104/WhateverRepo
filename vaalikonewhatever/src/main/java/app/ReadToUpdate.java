@@ -23,17 +23,11 @@ public class ReadToUpdate extends HttpServlet {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "topi", "assmen123");
 	}
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ReadToUpdate() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String id=request.getParameter("id");
