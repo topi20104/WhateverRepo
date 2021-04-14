@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Candidoods</title>
+<title>Candidass</title>
 
 
 <link rel="stylesheet"
