@@ -1,18 +1,11 @@
 package dao;
 
-import java.sql.DriverManager;
-
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import data.ehdokas;
 import data.questions;
 import data.vastaus;
 
-import java.sql.Connection;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class Dao {
 	private String url;

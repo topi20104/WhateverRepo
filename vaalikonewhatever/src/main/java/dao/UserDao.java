@@ -1,8 +1,8 @@
 package dao;
- 
-import java.sql.*;
 
 import data.user;
+
+import java.sql.*;
  
 public class UserDao {
  

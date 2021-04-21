@@ -1,11 +1,11 @@
 package services;
 
-import java.util.ArrayList;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 
 /*
  * URI to this service's Root Resource class is /laptopservice
