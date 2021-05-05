@@ -5,7 +5,7 @@
 	
 	<persistence-unit name="restful">
 	<class>data.vastaus</class>
-		
+	<class>data.questions.questions</class>
 <!-- If using MySQL 5.7 -->
 <!--  
 	as a root user give a command
