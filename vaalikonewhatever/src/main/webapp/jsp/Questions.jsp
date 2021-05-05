@@ -63,8 +63,16 @@
 			<div class="field">
 				<label class="label">
 					<button class="button is-success" type="submit">Continue</button>
+				
+				
+					
 				</label>
 			</div>
+			
+		</form>
+		
+		<form method="post" action="../deleteResults">
+		<button class="button is-danger" type="submit">Delete all the answers</button>
 		</form>
 	</div>
 	

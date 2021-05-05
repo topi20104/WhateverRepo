@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dfab03e5-2a09-4d95-b1d8-b84c977e4fad" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Dump20210412/vaalikone_ehdokkaat.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dump20210412/vaalikone_kysymykset.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dump20210412/vaalikone_vastaukset.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/ReadToUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/ReadToUpdate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/ReadToUpdateEhdokas.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/ReadToUpdateEhdokas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/ReadToUpdatequestions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/ReadToUpdatequestions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/delete.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/delete.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/insert.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/insert.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/logout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/logout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/saveResults.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/saveResults.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/showQuestions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/showQuestions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/show_ehdokkaat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/show_ehdokkaat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/app/update_ehdokkaat.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/app/update_ehdokkaat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dao/Dao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dao/Dao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/data/ehdokas.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/data/ehdokas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/data/questions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/data/questions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/data/user.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/data/user.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/data/vastaus.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/data/vastaus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/ReadToUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ReadToUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/ReadToUpdateEhdokas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ReadToUpdateEhdokas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/ReadToUpdatequestions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/ReadToUpdatequestions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/delete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/delete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/insert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/saveResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/saveResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/showQuestions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/showQuestions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/show_ehdokkaat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/show_ehdokkaat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/update_ehdokkaat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/update_ehdokkaat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/ehdokas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/ehdokas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/questions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/questions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/user.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/user.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/vastaus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/vastaus.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1rTlBHowU1oECWhzwTp1vnNOrTa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.google.cloudcode.ide_session_index" value="20210421_0004" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Google App Engine Deployment.Google App Engine Deployment">
+    <configuration name="Unnamed" type="CloudCodeCloudRunConfigurationType" factoryName="CloudCodeCloudRunDevelopConfigurationFactory" show_console_on_std_err="false" show_console_on_std_out="false" imageBuilder="{&quot;name&quot;:&quot;Buildpacks&quot;,&quot;payload&quot;:{&quot;path&quot;:&quot;pom.xml&quot;,&quot;builder&quot;:&quot;gcr.io/buildpacks/builder:v1&quot;}}">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="buildpacksEnv" />
+      <option name="cloudSqlConnections">
+        <list />
+      </option>
+      <option name="cpuAllocated" value="NO_LIMIT" />
+      <option name="dockerBuildArgs" />
+      <option name="dockerTarget" value="" />
+      <option name="environmentVariables" />
+      <option name="loadingAvailableBuilders" value="false" />
+      <option name="mappings">
+        <list />
+      </option>
+      <option name="memoryAllocated" value="MIB_256" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="serviceAccount" value="" />
+      <option name="serviceName" value="vaalikonewhatever" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Google Cloud Debug" type="GCPDebug" factoryName="Google Cloud Debugger">
+      <method v="2" />
+    </configuration>
+    <configuration name="Google App Engine Deployment" type="gcp-app-engine-deploy" factoryName="Google App Engine Deployment" server-name="Google App Engine">
+      <method v="2" />
+    </configuration>
+    <configuration name="Unnamed" type="gcp-app-engine-deploy" factoryName="Google App Engine Deployment" server-name="Google App Engine">
+      <deployment type="filesystem-war-jar-module" project="" version="auto">
+        <settings environment="APP_ENGINE_FLEX" stagedArtifactName="" userSpecifiedArtifactPath="" version="" />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Cloud Code: Cloud Run.Unnamed" />
+      <item itemvalue="Google App Engine Deployment.Unnamed" />
+      <item itemvalue="Google App Engine Deployment.Google App Engine Deployment" />
+      <item itemvalue="Google Cloud Debugger.Google Cloud Debug" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dfab03e5-2a09-4d95-b1d8-b84c977e4fad" name="Default Changelist" comment="" />
+      <created>1619007831837</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1619007831837</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

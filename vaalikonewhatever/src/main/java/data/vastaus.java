@@ -1,7 +1,15 @@
-package data;	
+package data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class vastaus implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private transient String Kayttajanimi;
 	private transient int kysymys_id;
 	private transient int vastaus;
@@ -14,9 +22,7 @@ public class vastaus implements java.io.Serializable {
 		this.setKommentti(Kommentti);
 		
 	}
-	public vastaus() {
-		
-	}
+	
 	public int getKysymys_id() {
 		return kysymys_id;
 	}
