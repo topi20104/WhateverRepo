@@ -17,23 +17,23 @@ public class restfulVastaus {
 	public restfulVastaus() {
 		
 	}
-	public restfulVastaus(int kysymys_id, int weight) {
-		this.kysymys_id=kysymys_id;
-		this.weight=weight;
+	public restfulVastaus(int kysymys_id, int vastaus) {
+		this.setKysymys_id(kysymys_id);
+		this.vastaus=vastaus;
 	}
-	public restfulVastaus(String kayttajanimi, String breed, float weight) {
+	public restfulVastaus(String kayttajanimi, String Kommentti, int vastaus) {
 		this.kayttajanimi=kayttajanimi;
-		this.breed=breed;
-		this.weight=weight;
+		this.Kommentti=Kommentti;
+		this.vastaus=vastaus;
 	}
-	public restfulVastaus(String breed, String weight) {
-		this.breed=breed;
-		this.setWeight(weight);
+	public restfulVastaus(String Kommentti, String vastaus) {
+		this.Kommentti=Kommentti;
+		this.setvastaus(vastaus);
 	}
-	public restfulVastaus(String kayttajanimi, String breed, String weight) {
+	public restfulVastaus(String kayttajanimi, String Kommentti, String vastaus) {
 		this.setId(kayttajanimi);
-		this.breed=breed;
-		this.setWeight(weight);
+		this.Kommentti=Kommentti;
+		this.setvastaus(vastaus);
 	}
 	public String getId() {
 		return kayttajanimi;
@@ -42,24 +42,30 @@ public class restfulVastaus {
 		this.kayttajanimi = kayttajanimi;
 	}
 	
-	public String getBreed() {
-		return breed;
+	public String getKommentti() {
+		return Kommentti;
 	}
-	public void setBreed(String breed) {
-		this.breed = breed;
+	public void setKommentti(String Kommentti) {
+		this.Kommentti = Kommentti;
 	}
-	public float getWeight() {
-		return weight;
+	public float getvastaus() {
+		return vastaus;
 	}
-	public void setWeight(float weight) {
-		this.weight = weight;
+	public void setvastaus(int vastaus) {
+		this.vastaus = vastaus;
 	}
-	public void setWeight(String weight) {
+	public void setvastaus(String vastaus) {
 		try {
-			this.weight = Float.parseFloat(weight);
+			this.vastaus = Integer.parseInt(vastaus);
 		}
 		catch (NumberFormatException | NullPointerException e) {
 			//Do nothing - the value is not changed
 		}
+	}
+	public int getKysymys_id() {
+		return kysymys_id;
+	}
+	public void setKysymys_id(int kysymys_id) {
+		this.kysymys_id = kysymys_id;
 	}
 }
