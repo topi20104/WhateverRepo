@@ -5,6 +5,7 @@ import java.util.List;
 
 import data.vastaus;
 import data.questions;
+import data.restfulVastaus;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -34,10 +35,10 @@ public class Restful {
 	@Path("/readvastaus")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public List<vastaus> readvastaus() {
+	public List<restfulVastaus> readvastaus() {
 		EntityManager em=emf.createEntityManager();
 		em.getTransaction().begin();
-		List<vastaus> list=em.createQuery("select a from vastaukset a").getResultList();
+		List<restfulVastaus> list=em.createQuery("select a from vastaukset a").getResultList();
 		em.getTransaction().commit();
 		return list;
 	}
@@ -47,16 +48,16 @@ public class Restful {
     @Path("/deleteAnswer/{Kayttajanimi}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public List<vastaus> deleteCandidate(@PathParam("Kayttajanimi") String Kayttajanimi) {
+    public List<restfulVastaus> deleteCandidate(@PathParam("Kayttajanimi") String Kayttajanimi) {
         EntityManager em=emf.createEntityManager();
         em.getTransaction().begin();
-        vastaus v=em.find(vastaus.class, Kayttajanimi);
+        restfulVastaus v=em.find(restfulVastaus.class, Kayttajanimi);
         if (v!=null) {
             em.remove(v);//The actual insertion line
         }
         em.getTransaction().commit();
         //Calling the method readFish() of this service
-        List<vastaus> list=readvastaus();        
+        List<restfulVastaus> list=readvastaus();        
         return list;
     }
 	

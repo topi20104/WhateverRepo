@@ -4,8 +4,11 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	
 	<persistence-unit name="restful">
+
 	<class>data.vastaus</class>
 	<class>data.questions.questions</class>
+	<class>data.restfulvastaus</class>
+		
 <!-- If using MySQL 5.7 -->
 <!--  
 	as a root user give a command
