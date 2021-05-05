@@ -19,9 +19,10 @@ public class vastaus implements java.io.Serializable {
 	}
 	
 	public vastaus() {
-		// TODO Auto-generated constructor stub
-	}
 
+        // TODO Auto-generated constructor stub
+    }
+	
 	public int getKysymys_id() {
 		return kysymys_id;
 	}
