@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="vastaukset")
 public class restfulVastaus {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
@@ -15,22 +17,26 @@ public class restfulVastaus {
 	private String Kommentti;
 	
 	public restfulVastaus() {
-		
+		super();
 	}
 	public restfulVastaus(int kysymys_id, int vastaus) {
+		super();
 		this.setKysymys_id(kysymys_id);
 		this.vastaus=vastaus;
 	}
 	public restfulVastaus(String kayttajanimi, String Kommentti, int vastaus) {
+		super();
 		this.kayttajanimi=kayttajanimi;
 		this.Kommentti=Kommentti;
 		this.vastaus=vastaus;
 	}
 	public restfulVastaus(String Kommentti, String vastaus) {
+		super();
 		this.Kommentti=Kommentti;
 		this.setvastaus(vastaus);
 	}
 	public restfulVastaus(String kayttajanimi, String Kommentti, String vastaus) {
+		super();
 		this.setId(kayttajanimi);
 		this.Kommentti=Kommentti;
 		this.setvastaus(vastaus);

@@ -3,6 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import data.restfulVastaus;
 
 import javax.persistence.EntityManager;
@@ -25,18 +26,22 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("/restful")
 public class Restful {
-	EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
+	@GET
+	@Path("/name")
+	public String getServiceName() {
+		return ("This is Hunterservice");
+	}
+	
 
 	
 	@GET
-	@Path("/readvastaus")
+	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public List<restfulVastaus> readvastaus() {
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
 		EntityManager em=emf.createEntityManager();
-		em.getTransaction().begin();
-		List<restfulVastaus> list=em.createQuery("select a from vastaukset a").getResultList();
-		em.getTransaction().commit();
+		
+		List<restfulVastaus> list=em.createQuery("select a from restfulVastaus a").getResultList();
 		return list;
 	}
 	
@@ -46,7 +51,8 @@ public class Restful {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public List<restfulVastaus> deleteCandidate(@PathParam("Kayttajanimi") String Kayttajanimi) {
-        EntityManager em=emf.createEntityManager();
+    	EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
+    	EntityManager em=emf.createEntityManager();
         em.getTransaction().begin();
         restfulVastaus v=em.find(restfulVastaus.class, Kayttajanimi);
         if (v!=null) {
