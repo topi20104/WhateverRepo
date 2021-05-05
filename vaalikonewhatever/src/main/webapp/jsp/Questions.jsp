@@ -14,10 +14,10 @@
 	<div class="column container is-max-widescreen" style="">
 	<h1 class="title">Questions menu</h1>
 	
-	<!-- FORM -->
+		<!-- FORM -->
 		<form method="post" action="../saveResults">
 		
-		<!-- DEBUGGING -->
+			<!-- DEBUGGING -->
 			${username} <br>
 			${salasana}
 			
@@ -63,12 +63,8 @@
 			<div class="field">
 				<label class="label">
 					<button class="button is-success" type="submit">Continue</button>
-				
-				
-					
 				</label>
 			</div>
-			
 		</form>
 		
 		<form method="post" action="../deleteResults">

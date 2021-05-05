@@ -3,6 +3,8 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
+import data.vastaus;
+import data.questions;
 import data.restfulVastaus;
 
 import javax.persistence.EntityManager;
@@ -10,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -58,5 +61,31 @@ public class Restful {
         return list;
     }
 	
+    /**
+     * @author erict
+     *
+     */
+    @Path("/addquestion")
+    @Consumes("application/x-www-form-urlencoded")
+    public class AddQuestions {
+    	
+    	public void main (String[] args, @FormParam("kysymys") String kysymys) {
+    		
+	    	EntityManager em=emf.createEntityManager();
+	    	em.getTransaction().begin();
+	    	
+	    	//New question object
+	    	questions question = new questions();
+	    	
+	    	//Sets the question value | Question ID is auto_increment so no need to set that value
+	    	question.setKysymys(kysymys);
+	    	
+	    	//Commit the changes
+	    	em.persist(question);
+	    	em.getTransaction().commit();
+	    	em.close();
+
+    	}
+    }
 	
 }
