@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Table(name="vastaukset")
 public class restfulVastaus {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private String kayttajanimi;
 	private int kysymys_id;
 	private int vastaus;

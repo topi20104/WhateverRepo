@@ -40,9 +40,11 @@ public class Restful {
 	public List<restfulVastaus> readvastaus() {
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
 		EntityManager em=emf.createEntityManager();
+		em.getTransaction().begin();
+		List<restfulVastaus> list=em.createNativeQuery("select * from vastaukset").getResultList();
 		
-		List<restfulVastaus> list=em.createQuery("select a from restfulVastaus a").getResultList();
-		return list;
+		em.getTransaction().commit();
+			return list;
 	}
 	
 	
