@@ -3,8 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
-import data.vastaus;
-import data.questions;
+
 import data.restfulVastaus;
 
 import javax.persistence.EntityManager;
@@ -12,7 +11,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -29,19 +27,24 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("/restful")
 public class Restful {
-	EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
+	@GET
+	@Path("/name")
+	public String getServiceName() {
+		return ("This is Hunterservice");
+	}
+	
 
 	
 	@GET
 	@Path("/readvastaukset")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public List<restfulVastaus> readvastaus() {
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
 		EntityManager em=emf.createEntityManager();
 		em.getTransaction().begin();
 		List<restfulVastaus> list=em.createNativeQuery("select * from vastaukset").getResultList();
 		em.getTransaction().commit();
-		return list;
+			return list;
 	}
 	
 	
@@ -50,7 +53,8 @@ public class Restful {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public List<restfulVastaus> deleteCandidate(@PathParam("Kayttajanimi") String Kayttajanimi) {
-        EntityManager em=emf.createEntityManager();
+    	EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
+    	EntityManager em=emf.createEntityManager();
         em.getTransaction().begin();
         restfulVastaus v=em.find(restfulVastaus.class, Kayttajanimi);
         if (v!=null) {
@@ -62,7 +66,6 @@ public class Restful {
         return list;
     }
 	
-
     @POST
     @Path("/addquestion")
     @Produces(MediaType.APPLICATION_JSON)//Method returns object as a JSON string
@@ -91,5 +94,4 @@ public class Restful {
     	
 		return kysymys;
 	}
-	
 }

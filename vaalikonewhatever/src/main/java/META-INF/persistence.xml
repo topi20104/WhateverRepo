@@ -8,6 +8,7 @@
 	<class>data.vastaus</class>
 	<class>data.questions</class>
 	<class>data.restfulvastaus</class>
+	<class>data.restfulVastaus</class>
 		
 <!-- If using MySQL 5.7 
 
@@ -25,7 +26,7 @@
 <!--  ddlGeneration == database tables will be created, if they do not exist--> 
     <properties>
 	    <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-	    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/vaalikone" />
+	    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/vaalikone?useSSL=false" />
 	    <property name="javax.persistence.jdbc.user" value="topi" />
 	    <property name="javax.persistence.jdbc.password" value="assmen123" />
 	    <property name="eclipselink.logging.level" value="ALL"/>
