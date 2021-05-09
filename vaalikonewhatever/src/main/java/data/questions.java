@@ -9,9 +9,14 @@ import javax.persistence.Table;
 @Entity
 @Table (name="kysymykset")
 public class questions {
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@Id represents the primary key property for the column
+	@Id
+	//@GeneratedValue assings the value automatically, no matter what value is given to the constructor
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="KYSYMYS_ID")
+	
 	private int kysymys_id;
-	@Column(name ="kysymys")
+	@Column(name ="KYSYMYS")
 	private String kysymys;
 	
 	public questions (String kysymys_id, String kysymys) {
@@ -42,7 +47,4 @@ public class questions {
 	public void setKysymys(String kysymys) {
 		this.kysymys = kysymys;
 	}
-	
-	
-	
 }

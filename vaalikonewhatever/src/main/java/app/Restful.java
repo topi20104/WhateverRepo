@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -35,14 +36,13 @@ public class Restful {
 
 	
 	@GET
-	@Path("/all")
+	@Path("/readvastaukset")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<restfulVastaus> readvastaus() {
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
 		EntityManager em=emf.createEntityManager();
 		em.getTransaction().begin();
 		List<restfulVastaus> list=em.createNativeQuery("select * from vastaukset").getResultList();
-		
 		em.getTransaction().commit();
 			return list;
 	}
@@ -66,5 +66,32 @@ public class Restful {
         return list;
     }
 	
-	
+    @POST
+    @Path("/addquestion")
+    @Produces(MediaType.APPLICATION_JSON)//Method returns object as a JSON string
+	@Consumes("application/x-www-form-urlencoded") //Method can receive POSTed data from a html form
+    	
+    //This method can be converted into void, but currently it is a string for debugging purposes
+	public String AddQuestions (@FormParam("kysymys") String kysymys) {
+		System.out.println("Before anything");
+    	EntityManager em=emf.createEntityManager();
+    	System.out.println("Before transaction");
+    	em.getTransaction().begin();
+    	
+    	//New question object
+    	questions question = new questions();
+    	
+    	//Sets the question value | Question ID is auto_increment so no need to set that value
+    	question.setKysymys(kysymys);
+    	question.setId(0);
+    	
+    	//Commit the changes
+    	em.persist(question);
+    	em.getTransaction().commit();
+    	System.out.println("After transaction");
+    	em.close();
+    	
+    	
+		return kysymys;
+	}
 }

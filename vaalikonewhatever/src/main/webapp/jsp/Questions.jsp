@@ -6,9 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+<title>Questions menu</title>
 </head>
 <body>
 	<div class="column container is-max-widescreen" style="">
