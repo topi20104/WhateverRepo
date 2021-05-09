@@ -3,7 +3,7 @@ package app;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import data.questions;
 import data.restfulVastaus;
 
 import javax.persistence.EntityManager;
@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -74,6 +75,7 @@ public class Restful {
     //This method can be converted into void, but currently it is a string for debugging purposes
 	public String AddQuestions (@FormParam("kysymys") String kysymys) {
 		System.out.println("Before anything");
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
     	EntityManager em=emf.createEntityManager();
     	System.out.println("Before transaction");
     	em.getTransaction().begin();

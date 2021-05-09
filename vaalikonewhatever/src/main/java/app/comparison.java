@@ -1,5 +1,8 @@
 package app;
 
+import javax.ws.rs.Path;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.GenericType;
@@ -8,7 +11,11 @@ import data.*;
 import java.util.*;
 
 
+
+@Path("/comparison")
 public class comparison {
+	@GET
+	@Consumes("application/x-www-form-urlencoded")
 	public static void main(String[] args) {
 		String uri = "http://localhost:8080/rest/restful/readvastaukset";
 		Client client = ClientBuilder.newClient();
