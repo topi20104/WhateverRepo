@@ -14,11 +14,7 @@
 	<h1 class="title">Questions menu</h1>
 	
 		<!-- FORM -->
-		<form method="post" action="../saveResults">
-		
-			<!-- DEBUGGING -->
-			${username} <br>
-			${salasana}
+		<form method="get" action="../comparison">
 			
 				<!-- LOOP -->
 				<c:forEach var="questions" items="${requestScope.questionslist}">
@@ -53,9 +49,6 @@
 								5
 						</label>
 					</div>
-
-					<textarea class="textarea" name='comment${questions.id}' placeholder="Kommentti"></textarea>
-
 				</div>
 				</c:forEach>
 			<!-- Button/s -->
@@ -64,10 +57,6 @@
 					<button class="button is-success" type="submit">Continue</button>
 				</label>
 			</div>
-		</form>
-		
-		<form method="post" action="../deleteResults">
-		<button class="button is-danger" type="submit">Delete all the answers</button>
 		</form>
 	</div>
 	
