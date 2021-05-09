@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Admin CPanel - Bookshop</title>
+<title>Home</title>
 </head>
 <body>
     <div style="text-align: center">
@@ -14,7 +14,6 @@
         <br><br>
         <a href="/logout">Logout</a>
         <a href="../Questions">show questions</a>
-        
     </div>
 </body>
 </html>
