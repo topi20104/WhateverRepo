@@ -3,9 +3,6 @@ package app;
 import java.net.URISyntaxException;
 import java.util.List;
 
-import data.questions;
-import data.restfulVastaus;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -20,6 +17,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import data.questions;
+import data.restfulVastaus;
 
 /*
  * URI to this service's Root Resource class is /laptopservice

@@ -1,14 +1,15 @@
 package app;
 
-import javax.ws.rs.Path;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.GenericType;
 
-import data.*;
-import java.util.*;
+import data.restfulVastaus;
 
 
 
