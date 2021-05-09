@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Candidass</title>
+<title>Admin</title>
 
 
 <link rel="stylesheet"
@@ -17,9 +17,12 @@
 
 <body>
 	<div class="column">
-		<h1 class="title">Candidates</h1>
+		<h1 class="title">Admin panel</h1>
 			<a href="/jsp/insertdata.jsp">
 				<button class="button is-info">Add a new lad</button>
+			</a>
+			<a href="/jsp/insert_question.jsp">
+				<button class="button is-info">Add a new question</button>
 			</a><br>
 	</div>
 	<div class="column is-two-thirds">
