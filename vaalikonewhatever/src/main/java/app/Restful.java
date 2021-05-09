@@ -33,13 +33,13 @@ public class Restful {
 
 	
 	@GET
-	@Path("/readvastaus")
+	@Path("/readvastaukset")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public List<restfulVastaus> readvastaus() {
 		EntityManager em=emf.createEntityManager();
 		em.getTransaction().begin();
-		List<restfulVastaus> list=em.createQuery("select a from vastaukset a").getResultList();
+		List<restfulVastaus> list=em.createNativeQuery("select * from vastaukset").getResultList();
 		em.getTransaction().commit();
 		return list;
 	}
