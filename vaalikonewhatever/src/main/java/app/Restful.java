@@ -47,19 +47,6 @@ public class Restful {
 			return list;
 	}
 	
-	@GET
-	@Path("/show/{Kayttajanimi}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<restfulVastaus> readcandidateanswers(@PathParam("Kayttajanimi") String Kayttajanimi) {
-		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
-		EntityManager em=emf.createEntityManager();
-		em.getTransaction().begin();
-		List<restfulVastaus> list=em.createNativeQuery("select * from vastaukset where Kayttajanimi=").getResultList();
-		
-		em.getTransaction().commit();
-			return list;
-	}
-	
 	
 	@DELETE
     @Path("/deleteAnswer/{Kayttajanimi}")
