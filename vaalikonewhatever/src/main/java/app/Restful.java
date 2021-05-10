@@ -30,12 +30,6 @@ import data.restfulVastaus;
  */
 @Path("/restful")
 public class Restful {
-	@GET
-	@Path("/name")
-	public String getServiceName() {
-		return ("This is Hunterservice");
-	}
-	
 
 	
 	@GET
