@@ -33,8 +33,6 @@ import data.restfulVastausDelete;
 @Path("/restful")
 public class Restful {
 
-	
-	private List<restfulVastaus> list;
 
 	@GET
 	@Path("/readvastaukset")

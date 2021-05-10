@@ -3,9 +3,12 @@ package app;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.client.Client;
@@ -29,29 +32,41 @@ public class comparison implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@GET
+	@POST
 	@Path("/query")
 	@Produces(MediaType.APPLICATION_JSON)
-	public static List<restfulVastaus> main(@Context UriInfo uriInfo) throws JsonProcessingException, IOException {
-		String query = uriInfo.getRequestUri().getQuery();
-		String[] urlArray = query.split("&");
+	public List<restfulVastaus> main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException {
 		ArrayList<String> ehdokkaat = new ArrayList<>();
 		ArrayList<Integer> userAnswers = new ArrayList<>();
-		for (String a : urlArray) {
-			String[] b = a.split("=");
-			for (int i=1;i<b.length;i=i+2){
-				int z = Integer.valueOf(b[i]);
-				userAnswers.add(z);
-	        }
-		}
+		userAnswers.add(one);
+		userAnswers.add(two);
+		userAnswers.add(three);
+		userAnswers.add(four);
+		userAnswers.add(five);
+		userAnswers.add(six);
+		userAnswers.add(seven);
+		userAnswers.add(eight);
+		userAnswers.add(nine);
+		userAnswers.add(ten);
+		userAnswers.add(eleven);
+		userAnswers.add(twelve);
+		userAnswers.add(thirteen);
+		userAnswers.add(fourteen);
+		userAnswers.add(fifteen);
+		userAnswers.add(sixteen);
+		userAnswers.add(seventeen);
+		userAnswers.add(eighteen);
+		userAnswers.add(nineteen);
 		String uri = "http://localhost:8080/rest/restful/readvastaukset";
 		Client client = ClientBuilder.newClient();
 		GenericType<List<restfulVastaus>> some = new GenericType<List<restfulVastaus>>() {};
 		List<restfulVastaus> list = client.target(uri).request().get(some);
+		
 		for (restfulVastaus x:list){
 			String candidate = x.getKayttajanimi();
 			if (!ehdokkaat.contains(candidate)) {
 				ehdokkaat.add(candidate);
+				
 			}
 		}
 		for (String name:ehdokkaat) {
@@ -79,6 +94,7 @@ public class comparison implements Serializable {
 				}
 			}
 			System.out.println(toll/userAnswers.size() * 100);
+			System.out.println(ehdokkaat);
 		}
 		return list;
 	}

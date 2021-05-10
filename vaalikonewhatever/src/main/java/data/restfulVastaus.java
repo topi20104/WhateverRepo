@@ -59,6 +59,11 @@ public class restfulVastaus implements Serializable {
 		this.setvastaus(vastaus);
 		this.Kommentti=Kommentti;
 	}
+	public restfulVastaus(int one, int two, int three, int four, int five, int six, int seven, int eight, int nine,
+			int ten, int eleven, int twelve, int thirteen, int fourteen, int fifteen, int sixteen, int seventeen,
+			int eighteen, int nineteen) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
