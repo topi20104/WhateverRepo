@@ -95,7 +95,7 @@ public class comparison implements Serializable {
 		for(HashMap.Entry m : map.entrySet())//Simple for loop to print each key and value
 		System.out.println(m.getKey() + " " + m.getValue());//Printing each 
 		String key = Collections.max(map.entrySet(), HashMap.Entry.comparingByValue()).getKey();
-		System.out.println(key);
+		System.out.println("Maximum similarity with: " + key);
 
 		return list;
 	}
