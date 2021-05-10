@@ -14,7 +14,7 @@
 	<h1 class="title">Questions menu</h1>
 	
 		<!-- FORM -->
-		<form method="get" action="../comparison">
+		<form method="get" action="../rest/comparison/query">
 			
 				<!-- LOOP -->
 				<c:forEach var="questions" items="${requestScope.questionslist}">
