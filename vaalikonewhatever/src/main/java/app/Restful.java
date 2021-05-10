@@ -21,6 +21,7 @@ import javax.ws.rs.core.Response;
 
 import data.questions;
 import data.restfulVastaus;
+import data.restfulVastausDelete;
 
 /*
  * URI to this service's Root Resource class is /laptopservice
@@ -52,14 +53,16 @@ public class Restful {
     @Path("/deleteAnswer/{Kayttajanimi}")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public List<restfulVastaus> deleteAnswer(@PathParam("Kayttajanimi") String Kayttajanimi) {
-	restfulVastaus ans=new restfulVastaus(Kayttajanimi);
+    public List<restfulVastausDelete> deleteAnswer(@PathParam("Kayttajanimi") String Kayttajanimi) {
+	restfulVastausDelete ans=new restfulVastausDelete(Kayttajanimi);
 	EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
 	EntityManager em=emf.createEntityManager();
 	em.getTransaction().begin();
 	if (!em.contains(ans)) {
 		ans = em.merge(ans);
+		em.remove(ans);
 	}
+	
 	em.getTransaction().commit();
 	System.out.println("test");
 		return null;
