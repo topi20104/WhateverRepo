@@ -32,8 +32,7 @@ import data.restfulVastausDelete;
  */
 @Path("/restful")
 public class Restful {
-
-
+	
 	@GET
 	@Path("/readvastaukset")
 	@Produces(MediaType.APPLICATION_JSON)
