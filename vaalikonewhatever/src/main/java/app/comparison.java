@@ -5,26 +5,18 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
+import java.util.List;
 import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
-
 import data.restfulVastaus;
-
 
 @Path("/comparison")
 public class comparison implements Serializable {
@@ -71,7 +63,6 @@ public class comparison implements Serializable {
 			String candidate = x.getKayttajanimi();
 			if (!ehdokkaat.contains(candidate)) {
 				ehdokkaat.add(candidate);
-				
 			}
 		}
 		for (String name:ehdokkaat) {
