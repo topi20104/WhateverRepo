@@ -65,11 +65,20 @@
 				</label>
 			</div>
 		</form>
+		<form method="post" action="rest/restful/updateAnswer/${username}">
+			<button class="button is-info" type="submit">Update your answers</button>
+		</form>
 		
-		<form method="post" action="../deleteResults">
-		<button class="button is-danger" type="submit">Delete all the answers</button>
+		<form method="post" action="rest/restful/deleteAnswer/${username}">
+		<button onclick="myFunction()" class="button is-danger" type="submit">Delete all the answers</button>
 		</form>
 	</div>
+	 
 	
+	<script>
+	function myFunction() {
+	  alert("Are you sure you want to delete all your answers?");
+	}
+	</script>
 </body>
 </html>

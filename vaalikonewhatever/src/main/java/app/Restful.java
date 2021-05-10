@@ -18,6 +18,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+
 import data.questions;
 import data.restfulVastaus;
 
@@ -32,6 +33,8 @@ import data.restfulVastaus;
 public class Restful {
 
 	
+	private List<restfulVastaus> list;
+
 	@GET
 	@Path("/readvastaukset")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -45,22 +48,41 @@ public class Restful {
 	}
 	
 	
-	@DELETE
+	@POST
     @Path("/deleteAnswer/{Kayttajanimi}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public List<restfulVastaus> deleteCandidate(@PathParam("Kayttajanimi") String Kayttajanimi) {
-    	EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
-    	EntityManager em=emf.createEntityManager();
-        em.getTransaction().begin();
-        restfulVastaus v=em.find(restfulVastaus.class, Kayttajanimi);
-        if (v!=null) {
-            em.remove(v);//The actual insertion line
-        }
-        em.getTransaction().commit();
-        //Calling the method readFish() of this service
-        List<restfulVastaus> list=readvastaus();        
-        return list;
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public List<restfulVastaus> deleteAnswer(@PathParam("Kayttajanimi") String Kayttajanimi) {
+	restfulVastaus ans=new restfulVastaus(Kayttajanimi);
+	EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
+	EntityManager em=emf.createEntityManager();
+	em.getTransaction().begin();
+	if (!em.contains(ans)) {
+		ans = em.merge(ans);
+	}
+	em.getTransaction().commit();
+	System.out.println("test");
+		return null;
+        
+    }
+    
+    @POST
+    @Path("/updateAnswer/{Kayttajanimi}")
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public List<restfulVastaus> updateAnswer(@PathParam("Kayttajanimi") String Kayttajanimi) {
+	restfulVastaus ans=new restfulVastaus(Kayttajanimi);
+	EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
+	EntityManager em=emf.createEntityManager();
+	em.getTransaction().begin();
+	if (!em.contains(ans)) {
+		ans = em.merge(ans);
+	}
+	em.remove(ans);
+	em.getTransaction().commit();
+	System.out.println("test");
+		return null;
+        
     }
 	
     @POST

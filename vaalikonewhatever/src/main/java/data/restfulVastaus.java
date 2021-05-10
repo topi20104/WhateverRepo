@@ -26,8 +26,11 @@ public class restfulVastaus implements Serializable {
 	@Column(name="KOMMENTTI")
 	protected String Kommentti;
 	
+	public restfulVastaus(String kayttajanimi) {
+		this.kayttajanimi=kayttajanimi;
+		}
 	public restfulVastaus() {
-			
+		
 		}
 
 	public restfulVastaus(String kayttajanimi, int kysymys_id, int vastaus, String Kommentti) {
@@ -70,6 +73,8 @@ public class restfulVastaus implements Serializable {
 			//Do nothing - the value is not changed
 		}
 	}
+
+	
 	public String getKayttajanimi() {
 		return kayttajanimi;
 	}

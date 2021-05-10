@@ -9,6 +9,7 @@
 	<class>data.vastaus</class>
 	<class>data.questions</class>
 	<class>data.restfulVastaus</class>
+	
 <!-- If using MySQL 5.7 
 
 	as a root user give a commands:
