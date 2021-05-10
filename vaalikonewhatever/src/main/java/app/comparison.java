@@ -93,7 +93,7 @@ public class comparison implements Serializable {
 			map.put(name, (toll/userAnswers.size() * 100));//Calculating the percentage and adding the entry to the map
 		}
 		for(HashMap.Entry m : map.entrySet())//Simple for loop to print each key and value
-		System.out.println(m.getKey() + " " + m.getValue());//Printing each 
+		System.out.println(m.getKey() + " " + m.getValue() + " %");//Printing each 
 		String key = Collections.max(map.entrySet(), HashMap.Entry.comparingByValue()).getKey();
 		System.out.println("Maximum similarity with: " + key);
 
