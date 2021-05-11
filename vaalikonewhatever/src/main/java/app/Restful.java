@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -40,6 +39,7 @@ public class Restful {
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
 		EntityManager em=emf.createEntityManager();
 		em.getTransaction().begin();
+		@SuppressWarnings("unchecked")
 		List<restfulVastaus> list=em.createQuery("select a from restfulVastaus a").getResultList();
 		em.getTransaction().commit();
 		return list;

@@ -30,8 +30,6 @@ public class login extends HttpServlet {
     ArrayList<ehdokas> list=null;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		
     }
  
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -39,32 +37,28 @@ public class login extends HttpServlet {
         String Kayttajanimi = request.getParameter("Kayttajanimi");
         String Salasana     = request.getParameter("Salasana");
         
-         
         UserDao userDao = new UserDao();
          
         try {
-             user user = userDao.checkLogin(Kayttajanimi, Salasana);
-             String username = Kayttajanimi;
-             String password = Salasana;
-             
+            user user = userDao.checkLogin(Kayttajanimi, Salasana);
+            String username = Kayttajanimi;
+            String password = Salasana;
+            String redirect = "http://localhost:8080";
             
              
             if (user != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
-                session.setAttribute("salasana", password);
-               
+                session.setAttribute("salasana", password);  
             } else {
                 String message = "Invalid email/password";
                 request.setAttribute("message", message);
             }
-            String redirect = "http://localhost:8080";
-            response.sendRedirect(redirect);
-           
             
-             
+            response.sendRedirect(redirect);
+              
         } catch (SQLException | ClassNotFoundException ex) {
-            throw new ServletException(ex);
+        	throw new ServletException(ex);
         }
     }
 }

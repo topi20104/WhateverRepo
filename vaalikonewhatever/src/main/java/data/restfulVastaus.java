@@ -30,7 +30,6 @@ public class restfulVastaus implements Serializable {
 		this.kayttajanimi=kayttajanimi;
 		}
 	public restfulVastaus() {
-		
 		}
 
 	public restfulVastaus(String kayttajanimi, int kysymys_id, int vastaus, String Kommentti) {

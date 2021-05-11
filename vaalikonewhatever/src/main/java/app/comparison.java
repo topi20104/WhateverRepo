@@ -28,6 +28,8 @@ public class comparison implements Serializable {
 	
 	//A map for the percentages to associate them with each candidate
 	HashMap<String,Float> map = new HashMap<String,Float>();
+	//LinkedHashMap preserve the ordering of elements in which they are inserted
+	LinkedHashMap<String, Float> SortedMap = new LinkedHashMap<>();
 
 	@POST
 	@Path("/query")
@@ -96,6 +98,7 @@ public class comparison implements Serializable {
 			PutToMap(name, (toll/userAnswers.size() * 100));//Calculating the percentage and adding the entry to the map
 		}
 		SortedMap();
+		Loop();
 		//Get and print out the highest value
 		System.out.println("Maximum similarity with: " + HighestValue());
 		return list;
@@ -113,6 +116,7 @@ public class comparison implements Serializable {
 	}
 	
 	//Method to get the highest value key in the map
+	@SuppressWarnings("rawtypes")
 	String HighestValue () {
 		for(HashMap.Entry m : map.entrySet())//Simple for loop to print each key and value
 		System.out.println(m.getKey() + " " + m.getValue() + " %");//Printing each 
@@ -121,21 +125,26 @@ public class comparison implements Serializable {
 	}
 	
 	//Method to order the map from highest value to the lowest
-	void SortedMap() {
+	LinkedHashMap<String, Float> SortedMap() {
 		HashMap<String, Float> unSortedMap = GetMap();
         
 		//Original map
 		//System.out.println("Unsorted Map : " + unSortedMap);
 		 
-		//LinkedHashMap preserve the ordering of elements in which they are inserted
-		LinkedHashMap<String, Float> reverseSortedMap = new LinkedHashMap<>();
-		 
 		//Use Comparator.reverseOrder() for reverse ordering
 		unSortedMap.entrySet()
 		    .stream()
 		    .sorted(HashMap.Entry.comparingByValue(Comparator.reverseOrder())) 
-		    .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
-		 
-		System.out.println("Sorted Map: " + reverseSortedMap);
+		    .forEachOrdered(x -> SortedMap.put(x.getKey(), x.getValue()));
+		
+		//Returns the whole map
+		return SortedMap;
+	}
+	
+	//Method to get all records as a single line and have the variable "i"
+	void Loop () {
+		 for (String i : SortedMap.keySet()) {
+		      System.out.println("key: " + i + " value: " + SortedMap.get(i));
+	    }
 	}
 }
