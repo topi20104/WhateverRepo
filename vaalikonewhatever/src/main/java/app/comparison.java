@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
-
+import java.util.LinkedHashMap;
 import java.util.List;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -24,13 +25,16 @@ public class comparison implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	//A map for the percentages to associate them with each candidate
+	HashMap<String,Float> map = new HashMap<String,Float>();
 
 	@POST
 	@Path("/query")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<restfulVastaus> main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException {
-		//A map for the percentages to associate them with each candidate
-		HashMap<String,Float> map=new HashMap<String,Float>();//Creating HashMap
+		
+
 		
 		ArrayList<String> ehdokkaat = new ArrayList<>();
 		ArrayList<Integer> userAnswers = new ArrayList<>();
@@ -90,13 +94,48 @@ public class comparison implements Serializable {
 					count++;
 				}
 			}
-			map.put(name, (toll/userAnswers.size() * 100));//Calculating the percentage and adding the entry to the map
+			//Call the method to put records to the map
+			PutToMap(name, (toll/userAnswers.size() * 100));//Calculating the percentage and adding the entry to the map
 		}
+		SortedMap();
+		//Get and print out the highest value
+		System.out.println("Maximum similarity with: " + HighestValue());
+		return list;
+		
+	}
+	
+	//Getter for the map
+	HashMap<String, Float> GetMap () {
+		return map;
+	}
+	
+	//Method to add records to the map
+	void PutToMap (String key, Float value) {
+		map.put(key,value);
+	}
+	
+	//Method to get the highest value key in the map
+	String HighestValue () {
 		for(HashMap.Entry m : map.entrySet())//Simple for loop to print each key and value
 		System.out.println(m.getKey() + " " + m.getValue() + " %");//Printing each 
 		String key = Collections.max(map.entrySet(), HashMap.Entry.comparingByValue()).getKey();
-		System.out.println("Maximum similarity with: " + key);
-
-		return list;
+		return key;
+	}
+	
+	void SortedMap() {
+		HashMap<String, Float> unSortedMap = GetMap();
+        
+		System.out.println("Unsorted Map : " + unSortedMap);
+		 
+		//LinkedHashMap preserve the ordering of elements in which they are inserted
+		LinkedHashMap<String, Float> reverseSortedMap = new LinkedHashMap<>();
+		 
+		//Use Comparator.reverseOrder() for reverse ordering
+		unSortedMap.entrySet()
+		    .stream()
+		    .sorted(HashMap.Entry.comparingByValue(Comparator.reverseOrder())) 
+		    .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
+		 
+		System.out.println("Reverse Sorted Map   : " + reverseSortedMap);
 	}
 }
