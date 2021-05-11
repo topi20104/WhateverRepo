@@ -8,6 +8,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -100,7 +104,13 @@ public class comparison implements Serializable {
 		SortedMap();
 		//Get and print out the highest value
 		System.out.println("Maximum similarity with: " + HighestValue());
-		return list;
+		GetMap();
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
+		EntityManager em=emf.createEntityManager();
+		em.getTransaction().begin();
+		List<restfulVastaus> list2=em.createNativeQuery("select * from ehdokkaat").getResultList();
+		em.getTransaction().commit();
+		return list2;
 		
 	}
 	
