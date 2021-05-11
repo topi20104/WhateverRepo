@@ -34,8 +34,6 @@ public class comparison implements Serializable {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<restfulVastaus> main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException {
 		
-
-		
 		ArrayList<String> ehdokkaat = new ArrayList<>();
 		ArrayList<Integer> userAnswers = new ArrayList<>();
 		userAnswers.add(one);
@@ -122,10 +120,12 @@ public class comparison implements Serializable {
 		return key;
 	}
 	
+	//Method to order the map from highest value to the lowest
 	void SortedMap() {
 		HashMap<String, Float> unSortedMap = GetMap();
         
-		System.out.println("Unsorted Map : " + unSortedMap);
+		//Original map
+		//System.out.println("Unsorted Map : " + unSortedMap);
 		 
 		//LinkedHashMap preserve the ordering of elements in which they are inserted
 		LinkedHashMap<String, Float> reverseSortedMap = new LinkedHashMap<>();
@@ -136,6 +136,6 @@ public class comparison implements Serializable {
 		    .sorted(HashMap.Entry.comparingByValue(Comparator.reverseOrder())) 
 		    .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
 		 
-		System.out.println("Reverse Sorted Map   : " + reverseSortedMap);
+		System.out.println("Sorted Map: " + reverseSortedMap);
 	}
 }
