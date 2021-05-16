@@ -2,7 +2,6 @@ package app;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,31 +12,16 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import data.ehdokas;
 import data.restfulVastaus;
-import data.restfulVastausDelete;
 
 @Path("/comparison")
 public class comparison implements Serializable {
@@ -46,8 +30,6 @@ public class comparison implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	 @Context
-	 private HttpServletRequest request;
 	//A map for the percentages to associate them with each candidate
 	HashMap<String,Float> map = new HashMap<String,Float>();
 	//LinkedHashMap preserve the ordering of elements in which they are inserted
@@ -55,11 +37,8 @@ public class comparison implements Serializable {
 
 	@POST
 	@Path("/query")
-	@Consumes("application/x-www-form-urlencoded") //Method can receive POSTed data from a html form
 	@Produces(MediaType.APPLICATION_JSON)
-	public Object main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException, URISyntaxException {
-		HttpSession session =request.getSession();
-		
+	public List<restfulVastaus> main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException {
 		
 		ArrayList<String> ehdokkaat = new ArrayList<>();
 		ArrayList<Integer> userAnswers = new ArrayList<>();
@@ -117,10 +96,8 @@ public class comparison implements Serializable {
 						toll += 0.25;
 					}
 					count++;
-					
 				}
 			}
-			
 			//Call the method to put records to the map
 			PutToMap(name, (toll/userAnswers.size() * 100));//Calculating the percentage and adding the entry to the map
 		}
@@ -129,26 +106,14 @@ public class comparison implements Serializable {
 		//Get and print out the highest value
 		System.out.println("Maximum similarity with: " + HighestValue());
 		GetMap();
-		java.net.URI location = new java.net.URI("http://localhost:8080/resultpage");
-		return Response.temporaryRedirect(location).build(); 
-		
-		
-	}
-
-	@GET
-	@Path("/getCandidate/{Kayttajanimi}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public ehdokas getCandidate(@PathParam("Kayttajanimi") String Kayttajanimi) {
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
 		EntityManager em=emf.createEntityManager();
 		em.getTransaction().begin();
-		ehdokas ehdokas = em.find(ehdokas.class, Kayttajanimi);
+		List<restfulVastaus> list2=em.createNativeQuery("select * from ehdokkaat").getResultList();
 		em.getTransaction().commit();
-		em.close();
-		return ehdokas;
+		return list2;
+		
 	}
-	       
-	 
 	
 	//Getter for the map
 	HashMap<String, Float> GetMap () {
@@ -158,9 +123,6 @@ public class comparison implements Serializable {
 	//Method to add records to the map
 	void PutToMap (String key, Float value) {
 		map.put(key,value);
-		HttpSession session =request.getSession();
-		session.setAttribute("key", key);
-		session.setAttribute("value", value);
 	}
 	
 	//Method to get the highest value key in the map
