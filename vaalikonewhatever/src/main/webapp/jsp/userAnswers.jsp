@@ -25,7 +25,7 @@
 					</label>
 					<div class="control">
 						<label class="radio">
-							<input type="radio" id="1" name="${questions.id}" value="1">
+							<input type="radio" id="1" name="${questions.id}" value="1" checked="checked">
 								1
 						</label>
 

@@ -1,16 +1,35 @@
 package data;
 
-public class ehdokas {
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ehdokkaat")
+public class ehdokas implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Column(name="Ehdokas_ID")
 	private int Ehdokas_ID;
 	private String Etunimi;
 	private String Sukunimi;
 	private String Puolue;
 	private String Kotipaikkakunta;
 	private int Ika;
+	@Column(name="Miksi_eduskuntaan")
 	private String Miksi;
+	@Column(name="Mita_asioita_haluat_edistaa")
 	private String Mita;
 	private String Ammatti;
 	private String Salasana;
+	@Id
+	@Column(name="Kayttajanimi")
 	private String Kayttajanimi;
 	
 	public ehdokas(String Ehdokas_ID, String Sukunimi, String Etunimi, String Puolue, String Kotipaikkakunta, String Ika, String Miksi, String Mita, String Ammatti, String Salasana, String Kayttajanimi) {
