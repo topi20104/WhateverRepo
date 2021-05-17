@@ -41,7 +41,7 @@ public class comparison implements Serializable {
 	@POST
 	@Path("/query")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException, URISyntaxException {
+	public HashMap<String, Float> main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException, URISyntaxException {
 		
 		ArrayList<String> ehdokkaat = new ArrayList<>();
 		ArrayList<Integer> userAnswers = new ArrayList<>();
@@ -109,14 +109,8 @@ public class comparison implements Serializable {
 		//Get and print out the highest value
 		System.out.println("Maximum similarity with: " + HighestValue());
 		GetMap();
-		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
-		EntityManager em=emf.createEntityManager();
-		em.getTransaction().begin();
-		List<restfulVastaus> list2=em.createNativeQuery("select * from ehdokkaat").getResultList();
-		em.getTransaction().commit();
-		java.net.URI location = new java.net.URI("http://localhost:8080/resultpage");
-		return Response.temporaryRedirect(location).build(); 
 		
+		return SortedMap();
 	}
 	
 	//Getter for the map

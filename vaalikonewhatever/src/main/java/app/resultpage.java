@@ -48,10 +48,7 @@ public class resultpage extends HttpServlet {
 		 response.setContentType("text/plain");
 		 response.setCharacterEncoding("UTF-8");
 		 
-		 comparison comparison = new comparison();
-		 System.out.println("This is in resultpage");
-		 comparison.Loop();
-		 
+
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/resultpage.jsp");
 		rd.forward(request, response);
 	}
