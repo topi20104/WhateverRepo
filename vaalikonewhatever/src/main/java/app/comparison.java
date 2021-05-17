@@ -2,6 +2,7 @@ package app;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,6 +21,8 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import data.restfulVastaus;
 
@@ -38,7 +41,7 @@ public class comparison implements Serializable {
 	@POST
 	@Path("/query")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<restfulVastaus> main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException {
+	public Response main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException, URISyntaxException {
 		
 		ArrayList<String> ehdokkaat = new ArrayList<>();
 		ArrayList<Integer> userAnswers = new ArrayList<>();
@@ -111,7 +114,8 @@ public class comparison implements Serializable {
 		em.getTransaction().begin();
 		List<restfulVastaus> list2=em.createNativeQuery("select * from ehdokkaat").getResultList();
 		em.getTransaction().commit();
-		return list2;
+		java.net.URI location = new java.net.URI("http://localhost:8080/resultpage");
+		return Response.temporaryRedirect(location).build(); 
 		
 	}
 	
@@ -135,7 +139,7 @@ public class comparison implements Serializable {
 	}
 	
 	//Method to order the map from highest value to the lowest
-	LinkedHashMap<String, Float> SortedMap() {
+	public LinkedHashMap<String, Float> SortedMap() {
 		HashMap<String, Float> unSortedMap = GetMap();
         
 		//Original map
@@ -152,7 +156,7 @@ public class comparison implements Serializable {
 	}
 	
 	//Method to get all records as a single line and have the variable "i"
-	void Loop () {
+	public void Loop () {
 		 for (String i : SortedMap.keySet()) {
 		      System.out.println("key: " + i + " value: " + SortedMap.get(i));
 	    }
