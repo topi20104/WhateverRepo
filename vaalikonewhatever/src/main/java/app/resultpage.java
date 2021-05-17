@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.client.Invocation.Builder;
 
@@ -27,6 +29,7 @@ import dao.Dao;
 import data.ehdokas;
 import data.questions;
 import data.restfulVastaus;
+import data.result;
 import app.comparison;
 /**
  * Servlet implementation class ReadToUpdate
@@ -34,10 +37,7 @@ import app.comparison;
 @WebServlet("/resultpage")
 public class resultpage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Dao dao;
-	public void init() {
-		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "topi", "assmen123");
-	}
+	
 	public resultpage() {
 	    super();
 	    // TODO Auto-generated constructor stub
@@ -47,8 +47,18 @@ public class resultpage extends HttpServlet {
 	     throws IOException, ServletException {
 		 response.setContentType("text/plain");
 		 response.setCharacterEncoding("UTF-8");
+		 String uri = "http://localhost:8080/rest/comparison/query";
+		Client client = ClientBuilder.newClient();
+		WebTarget wt=client.target(uri);
+		Builder b=wt.request();
+		
+		
+		GenericType<List<result>> result = new GenericType<List<result>>() {};
+		
+		List<result> returnedList=b.get(result);
+		 request.setAttribute("resultlist", returnedList);
 		 
-
+		 
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/resultpage.jsp");
 		rd.forward(request, response);
 	}
