@@ -18,10 +18,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.Produces;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.client.Invocation.Builder;
 
@@ -43,23 +46,26 @@ public class resultpage extends HttpServlet {
 	    // TODO Auto-generated constructor stub
 	}
 	@Override
+	@Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_HTML})
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		 response.setContentType("text/plain");
 		 response.setCharacterEncoding("UTF-8");
 		 String uri = "http://localhost:8080/rest/comparison/query";
+		 
 		Client client = ClientBuilder.newClient();
 		WebTarget wt=client.target(uri);
 		Builder b=wt.request();
 		
+		GenericType<List<result>> genericList = new GenericType<List<result>>() {};
 		
-		GenericType<List<result>> result = new GenericType<List<result>>() {};
-		
-		List<result> returnedList=b.get(result);
-		 request.setAttribute("resultlist", returnedList);
+		List<result> returnedList=b.get(genericList);
+		System.out.println("Test");
+//		 request.setAttribute("resultlist", returnedList);
 		 
 		 
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/resultpage.jsp");
 		rd.forward(request, response);
 	}
+	
 }

@@ -42,7 +42,7 @@ public class comparison implements Serializable {
 
 	@POST
 	@Path("/query")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_HTML})
 	public ArrayList<result> main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException, URISyntaxException {
 		
 		ArrayList<String> ehdokkaat = new ArrayList<>();
@@ -112,7 +112,7 @@ public class comparison implements Serializable {
 			
 		}
 		//service
-		
+		System.out.println(list2);
 		return list2;
 	}
 	@GET
@@ -121,8 +121,8 @@ public class comparison implements Serializable {
 	public List<result> read () {
 		String uri = "http://localhost:8080/rest/comparison/query";
 		Client client = ClientBuilder.newClient();
-		GenericType<List<restfulVastaus>> some = new GenericType<List<restfulVastaus>>() {};
-		List<restfulVastaus> list3 = client.target(uri).request().get(some);
+		GenericType<List<result>> some = new GenericType<List<result>>() {};
+		List<result> list3 = client.target(uri).request().get(some);
 		return list3;
 		
 	}
