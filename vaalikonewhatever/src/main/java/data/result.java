@@ -12,7 +12,7 @@ public class result implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Column(name="kayttajanimi")
+	@Column(name="Kayttajanimi")
 	private String Kayttajanimi;
 	@Column(name="Value")
 	private Float Value;

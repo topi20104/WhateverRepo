@@ -56,7 +56,7 @@ public class comparison implements Serializable {
 	@Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_HTML})
 	public void main(@FormParam("1") int one, @FormParam("2") int two,@FormParam("3") int three,@FormParam("4") int four,@FormParam("5") int five,@FormParam("6") int six,@FormParam("7") int seven,@FormParam("8") int eight,@FormParam("9") int nine,@FormParam("10") int ten,@FormParam("11") int eleven,@FormParam("12") int twelve,@FormParam("13") int thirteen,@FormParam("14") int fourteen,@FormParam("15") int fifteen,@FormParam("16") int sixteen,@FormParam("17") int seventeen,@FormParam("18") int eighteen,@FormParam("19") int nineteen) throws JsonProcessingException, IOException, URISyntaxException, ServletException {
 		
-		ArrayList<String> ehdokkaat = new ArrayList<>();
+		HashMap<String, Integer> ehdokkaat1 = new HashMap<String, Integer>();
 		ArrayList<Integer> userAnswers = new ArrayList<>();
 		userAnswers.add(one);
 		userAnswers.add(two);
@@ -85,17 +85,29 @@ public class comparison implements Serializable {
 		
 		for (restfulVastaus x:list) {
 			String candidate = x.getKayttajanimi();
-			if (!ehdokkaat.contains(candidate)) {
-				ehdokkaat.add(candidate);
+			if (!ehdokkaat1.containsKey(candidate)) {
+				ehdokkaat1.put(candidate,null); //Puts data to the HashMap, sets the Integer as null for now
 			}
 		}
-		ArrayList<result> list2 = getResults();
-		int ehdokas_id = 0;
 		
-		result result = new result();
-		result res = new result(null, null, ehdokas_id);
-		for (String name:ehdokkaat) {
+		//MySQL query to get the ehdokas_ID for each user based on the username
+		EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
+		EntityManager em=emf.createEntityManager();
+		for (String name:ehdokkaat1.keySet()) { //For each loop based on the number of "keys" in the HashMap
 			
+			em.getTransaction().begin();
+			Query query = em.createNativeQuery("SELECT e.Ehdokas_ID from ehdokkaat e WHERE e.Kayttajanimi = "+ '"' + name + '"'); //I don't like this syntax either, but it works
+			int result =  (int) query.getSingleResult();
+			//System.out.println(result);//Prints the ID that it gets
+			em.getTransaction().commit();
+			ehdokkaat1.replace(name, result);//Now replaces the null Ehdokas_IDs in the HashMap based on the name
+		}
+		em.close();
+		
+		ArrayList<result> list2 = getResults();
+		result result = new result();
+		
+		for (String name:ehdokkaat1.keySet()) {
 			float toll = 0;
 			ArrayList<Integer> canAnswers = new ArrayList<>();
 			int count = 0;
@@ -122,29 +134,13 @@ public class comparison implements Serializable {
 
 			}
 			
-			// **** This code here is in-progress for getting candidate id from database. So far it doesnt do shit.
-			
-//			EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
-//			EntityManager em=emf.createEntityManager();
-//			 em.getTransaction().begin();
-//			 
-//			Query query = (Query) em.createQuery("SELECT e from result e WHERE e.Kayttajanimi LIKE :CustName"); 
-//			System.out.println(query);
-//			result = (result) query.setParameter("CustName", name).getResultList();
-//			
-//			 em.getTransaction().commit();
-//			 em.close();
-//			
-			
-			res = new result((toll/userAnswers.size() * 100), name, ehdokas_id);
+			result res = new result((toll/userAnswers.size() * 100), name, ehdokkaat1.get(name));
 			list2.add(res);
-			
-			
 			
 		}
 		//service
 		
-		System.out.println(list2);
+		//System.out.println(list2);
 		 request.setAttribute("list", result);
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/resultpage.jsp");
 		
@@ -162,17 +158,11 @@ public class comparison implements Serializable {
 		GenericType<List<result>> some = new GenericType<List<result>>() {};
 		List<result> list3 = client.target(uri).request().get(some);
 		return list3;
-		
 	}
 		
 	public ArrayList<result> getResults() {
 		// TODO Auto-generated method stub
 		ArrayList<result> list=new ArrayList<>();
-		
-		
 		return list;
 	}
-	
 }
-
-
