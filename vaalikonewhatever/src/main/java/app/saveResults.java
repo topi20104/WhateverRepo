@@ -2,6 +2,7 @@ package app;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,5 +52,7 @@ public class saveResults extends HttpServlet {
 					continue;
 				}
 			}
+			RequestDispatcher rd=request.getRequestDispatcher("/jsp/CandidateSavedResults.jsp");
+			rd.forward(request,response);
 	}
 }

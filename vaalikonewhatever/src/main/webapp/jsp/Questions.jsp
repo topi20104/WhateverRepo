@@ -49,7 +49,7 @@
 						</label>
 
 						<label class="radio">
-							<input type="radio" id="5" name="${questions.id}" value="5">
+							<input type="radio" id="5" name="${questions.id}" value="5" checked="checked">
 								5
 						</label>
 					</div>
@@ -65,7 +65,7 @@
 				</label>
 			</div>
 		</form>
-		<form method="post" action="rest/restful/updateAnswer/${username}">
+		<form method="post" action="rest/restful/updateAnswer">
 			<button class="button is-info" type="submit">Update your answers</button>
 		</form>
 		
@@ -78,7 +78,9 @@
 	<script>
 	function myFunction() {
 	  alert("Are you sure you want to delete all your answers?");
+	  alert("Records deleted.");	
 	}
+	 
 	</script>
 </body>
 </html>

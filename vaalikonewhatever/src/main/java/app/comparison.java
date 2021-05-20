@@ -122,6 +122,8 @@ public class comparison implements Serializable {
 
 			}
 			
+			// **** This code here is in-progress for getting candidate id from database. So far it doesnt do shit.
+			
 //			EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
 //			EntityManager em=emf.createEntityManager();
 //			 em.getTransaction().begin();
