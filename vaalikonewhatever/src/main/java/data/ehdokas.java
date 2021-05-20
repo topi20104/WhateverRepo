@@ -1,5 +1,6 @@
 package data;
 
+
 public class ehdokas {
 	private int Ehdokas_ID;
 	private String Etunimi;

@@ -5,11 +5,13 @@
 	
 	<persistence-unit name="restful">
 	
+	<class>data.result</class>
 
 	<class>data.vastaus</class>
 	<class>data.questions</class>
 	<class>data.restfulVastaus</class>
 	<class>data.restfulVastausDelete</class>
+	
 	
 <!-- If using MySQL 5.7 
 

@@ -13,6 +13,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +31,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+
+import data.ehdokas;
 import data.restfulVastaus;
 import data.result;
 
@@ -87,8 +90,12 @@ public class comparison implements Serializable {
 			}
 		}
 		ArrayList<result> list2 = getResults();
-		result res = new result(null, null);
+		int ehdokas_id = 0;
+		
+		result result = new result();
+		result res = new result(null, null, ehdokas_id);
 		for (String name:ehdokkaat) {
+			
 			float toll = 0;
 			ArrayList<Integer> canAnswers = new ArrayList<>();
 			int count = 0;
@@ -115,13 +122,30 @@ public class comparison implements Serializable {
 
 			}
 			
-			res = new result((toll/userAnswers.size() * 100), name);
+//			EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
+//			EntityManager em=emf.createEntityManager();
+//			 em.getTransaction().begin();
+//			 
+//			Query query = (Query) em.createQuery("SELECT e from result e WHERE e.Kayttajanimi LIKE :CustName"); 
+//			System.out.println(query);
+//			result = (result) query.setParameter("CustName", name).getResultList();
+//			
+//			 em.getTransaction().commit();
+//			 em.close();
+//			
+			
+			res = new result((toll/userAnswers.size() * 100), name, ehdokas_id);
 			list2.add(res);
+			
+			
 			
 		}
 		//service
+		
 		System.out.println(list2);
+		 request.setAttribute("list", result);
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/resultpage.jsp");
+		
 		request.setAttribute("list", list2);
 		rd.forward(request,response);
 		
