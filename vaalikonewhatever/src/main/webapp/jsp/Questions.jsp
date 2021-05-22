@@ -12,7 +12,7 @@
 <body>
 	<div class="column container is-max-widescreen" style="">
 	<h1 class="title">Questions menu</h1>
-	
+	<p id="demo"></p>	
 		<!-- FORM -->
 		<form method="post" action="../saveResults">
 		
@@ -29,7 +29,9 @@
 					</label>
 					<div class="control">
 						<label class="radio">
+						
 							<input type="radio" id="1" name="${questions.id}" value="1">
+							
 								1
 						</label>
 
@@ -49,7 +51,7 @@
 						</label>
 
 						<label class="radio">
-							<input type="radio" id="5" name="${questions.id}" value="5" checked="checked">
+							<input type="radio" id="5" name="${questions.id}" value="5">
 								5
 						</label>
 					</div>
@@ -73,14 +75,33 @@
 		<button onclick="myFunction()" class="button is-danger" type="submit">Delete all the answers</button>
 		</form>
 	</div>
-	 
+	
+	 <c:forEach var="test" items="${test}">
+	${test.kayttajanimi}<br>
+	 	${test.vastaus}	<br>
+	 	comment ${test.kommentti} <br>
+	 </c:forEach> 
 	
 	<script>
+	 function testSession() {
+        var childNumbers = "${sessionScope['test']}";
+        alert(childNumbers);
+     }
+	
 	function myFunction() {
 	  alert("Are you sure you want to delete all your answers?");
 	  alert("Records deleted.");	
 	}
-	 
+	window.onload = function() {
+		checkRadios();
+		};
+	 function checkRadios() {
+		 document.getElementById().checked = true;
+	 }
+	 function myFunction2(item, index) {
+		  document.getElementById("demo").innerHTML += index + ":" + item + "<br>";
+		}
+
 	</script>
 </body>
 </html>

@@ -74,13 +74,13 @@
 				<label class="label">
 					Käyttäjänimi:
 				</label>
-			<input class="input" type='text' id='kayttajanimi' name='kayttajanimi' autocomplete='username' value='${username}'>
+			<input class="input" type='text' id='kayttajanimi' name='kayttajanimi' autocomplete='username' value=''>
 			</div>
 			<div class="field">
 				<label class="label">
 					Salasana:
 				</label>
-			<input class="input" type='password' id='salasana' name='salasana' autocomplete="new-password" value='${salasana}'>
+			<input class="input" type='password' id='salasana' name='salasana' autocomplete="new-password" value=''>
 			</div>
 			<div class="field">
 				<label class="label">

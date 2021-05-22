@@ -9,14 +9,17 @@
 <title>Candidate to vote for</title>
 </head>
 <body>
+
 <c:forEach var="result" items="${requestScope.list}">
 	<h1>name 		${result.kayttajanimi}</h1> <br>
 	<h2>percent 	${result.value}</h2> <br>
 	<h3>ehdokas id	${result.ehdokas_id}</h3> <br>
+	<a href="/readtoupdateehdokasshow2?id=${result.ehdokas_id}">show</a> <br>
 </c:forEach>
 
 
 
 	
 </body>
+
 </html>
