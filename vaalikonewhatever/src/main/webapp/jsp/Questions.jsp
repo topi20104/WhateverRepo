@@ -30,7 +30,7 @@
 					<div class="control">
 						<label class="radio">
 						
-							<input type="radio" id="1" name="${questions.id}" value="1">
+							<input type="radio" id="1" name="${questions.id}" value="1" >
 							
 								1
 						</label>
@@ -41,7 +41,7 @@
 						</label>
 
 						<label class="radio">
-							<input type="radio" id="3" name="${questions.id}" value="3">
+							<input type="radio" id="3" name="${questions.id}" value="3"   checked="checked">
 								3
 						</label>
 
@@ -67,41 +67,18 @@
 				</label>
 			</div>
 		</form>
-		<form method="post" action="rest/restful/updateAnswer">
-			<button class="button is-info" type="submit">Update your answers</button>
-		</form>
-		
-		<form method="post" action="rest/restful/deleteAnswer/${username}">
+	
+		<form method="POST" action="rest/restful/deleteAnswer/${username}">
 		<button onclick="myFunction()" class="button is-danger" type="submit">Delete all the answers</button>
 		</form>
 	</div>
-	
-	 <c:forEach var="test" items="${test}">
-	${test.kayttajanimi}<br>
-	 	${test.vastaus}	<br>
-	 	comment ${test.kommentti} <br>
-	 </c:forEach> 
-	
 	<script>
-	 function testSession() {
-        var childNumbers = "${sessionScope['test']}";
-        alert(childNumbers);
-     }
-	
+
 	function myFunction() {
 	  alert("Are you sure you want to delete all your answers?");
 	  alert("Records deleted.");	
 	}
-	window.onload = function() {
-		checkRadios();
-		};
-	 function checkRadios() {
-		 document.getElementById().checked = true;
-	 }
-	 function myFunction2(item, index) {
-		  document.getElementById("demo").innerHTML += index + ":" + item + "<br>";
-		}
-
+	
 	</script>
 </body>
 </html>

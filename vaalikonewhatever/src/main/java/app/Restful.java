@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -66,24 +67,7 @@ public class Restful {
         
     }
     
-    @POST
-    @Path("/updateAnswer/{Kayttajanimi}")
-	@Produces(MediaType.TEXT_HTML)
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public List<restfulVastaus> updateAnswer(@PathParam("Kayttajanimi") String Kayttajanimi) {
-	restfulVastaus ans=new restfulVastaus(Kayttajanimi);
-	EntityManagerFactory emf=Persistence.createEntityManagerFactory("restful");
-	EntityManager em=emf.createEntityManager();
-	em.getTransaction().begin();
-	if (!em.contains(ans)) {
-		ans = em.merge(ans);
-	}
-	em.remove(ans);
-	em.getTransaction().commit();
-	System.out.println("test");
-		return null;
-        
-    }
+    
 	
     @POST
     @Path("/addquestion")

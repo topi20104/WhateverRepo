@@ -43,7 +43,7 @@ public class login extends HttpServlet {
             user user = userDao.checkLogin(Kayttajanimi, Salasana);
             String username = Kayttajanimi;
             String password = Salasana;
-            String redirect = "http://localhost:8080";
+            String redirect = "http://localhost:8080/jsp/home.jsp";
             
              
             if (user != null) {
