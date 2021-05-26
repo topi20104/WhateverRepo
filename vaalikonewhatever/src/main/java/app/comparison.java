@@ -38,15 +38,11 @@ import data.result;
 
 @Path("/comparison")
 public class comparison implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
+	HashMap<String,Float> map = new HashMap<String,Float>(); //A map for the percentages to associate them with each candidate
+	LinkedHashMap<String, Float> SortedMap = new LinkedHashMap<>(); //LinkedHashMap preserve the ordering of elements in which they are inserted
 	
-	//A map for the percentages to associate them with each candidate
-	HashMap<String,Float> map = new HashMap<String,Float>();
-	//LinkedHashMap preserve the ordering of elements in which they are inserted
-	LinkedHashMap<String, Float> SortedMap = new LinkedHashMap<>();
 	@Context
 	HttpServletRequest request;
 	@Context
@@ -98,7 +94,7 @@ public class comparison implements Serializable {
 			em.getTransaction().begin();
 			Query query = em.createNativeQuery("SELECT e.Ehdokas_ID from ehdokkaat e WHERE e.Kayttajanimi = "+ '"' + name + '"'); //I don't like this syntax either, but it works
 			int result =  (int) query.getSingleResult();
-			//System.out.println(result);//Prints the ID that it gets
+			//System.out.println(result); //Prints the ID that it gets
 			em.getTransaction().commit();
 			ehdokkaat1.replace(name, result);//Now replaces the null Ehdokas_IDs in the HashMap based on the name
 		}
@@ -131,7 +127,6 @@ public class comparison implements Serializable {
 					}
 					count++;
 				}
-
 			}
 			
 			result res = new result((toll/userAnswers.size() * 100), name, ehdokkaat1.get(name));
@@ -146,7 +141,6 @@ public class comparison implements Serializable {
 		
 		request.setAttribute("list", list2);
 		rd.forward(request,response);
-		
 		
 	}
 	@GET
