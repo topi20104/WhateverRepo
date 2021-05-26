@@ -10,13 +10,43 @@
 <title>Candidate to vote for</title>
 </head>
 <body>
+	<div class="column container is-max-widescreen" style="">
+		<h1 class="title">Results</h1>
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Similarity with the candidate</th>
+					<th>Username of the candidate</th>
+					<th>User ID of the candidate</th>
+					<th></th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				
+			</tbody>
+				<c:forEach var="result" items="${requestScope.list}">
+					<tr>
+						<td>
+							${result.value} %
+						</td>
+						<td>
+							${result.kayttajanimi}
+						</td>
+						<td>
+							${result.ehdokas_id}
+						</td>
+						<td>
+							<a href='/readtoupdateehdokasshow2?id=${result.ehdokas_id}'>
+								<button class="button is-info is-small">Show candidate</button>
+							</a>
+						</td>
+					</tr>
 
-	<c:forEach var="result" items="${requestScope.list}">
-		<h1>name 		${result.kayttajanimi}</h1> <br>
-		<h2>percent 	${result.value}</h2> <br>
-		<h3>ehdokas id	${result.ehdokas_id}</h3> <br>
-		<a href="/readtoupdateehdokasshow2?id=${result.ehdokas_id}">show</a> <br>
-	</c:forEach>
-
+				</c:forEach>
+		
+		</table>
+	</div>
 </body>
 </html>
